@@ -1,0 +1,2 @@
+# Roguerino
+Ohjelmoinnin harkkatyörepo
