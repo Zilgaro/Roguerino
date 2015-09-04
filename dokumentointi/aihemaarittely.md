@@ -6,12 +6,12 @@ Toteutetaan ylhäältä alaspäin kuvattu vuoropohjainen peli, jossa pelaajan on
 
 **Pelaajan toiminnot**: 
 
-*Ohjelman käynnistys
-*Hahmon luominen
-*tai vanhasta tallennuksesta jatkaminen
-  *Onnistuu jos tallennus olemassa
-*Pelistä nauttiminen
-  *onnistuu jos peli on hyvä
-*Ohjelman sulkeminen
-  *peli tallentaa itse itsensä
-    *onnistuu, mikäli peli käynnissä
+1. Ohjelman käynnistys
+2. Hahmon luominen
+3. tai vanhasta tallennuksesta jatkaminen
+  * Onnistuu jos tallennus olemassa
+4. Pelistä nauttiminen
+  * onnistuu jos peli on hyvä
+5. Ohjelman sulkeminen
+  * peli tallentaa itse itsensä
+    * onnistuu, mikäli peli käynnissä
