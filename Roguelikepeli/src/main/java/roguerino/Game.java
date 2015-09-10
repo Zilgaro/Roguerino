@@ -9,6 +9,7 @@ public class Game {
     public void init() {
         this.logic = new Logic();
         this.logic.run();
-        this.logic.openGlSuperRender();
+        
+        
     }
 }

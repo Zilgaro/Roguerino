@@ -12,7 +12,7 @@ public class Logic {
 
     public Logic() {
         this.generator = new LevelGenerator();
-        this.level = generator.generateLevelEmpty(40, 40);
+        this.level = generator.generateLevelEmpty(10, 10);
         this.player = new Player();
         this.random = new Random();
     }
@@ -172,9 +172,19 @@ public class Logic {
     }
 
     public void run() {
-        this.level.getBlock(20, 20).setPlayer(this.player);
-        this.player.setX(20);
-        this.player.setY(20);
+        this.level.getBlock(5, 5).setPlayer(this.player);
+        this.player.setX(5);
+        this.player.setY(5);
+        this.openGlSuperRender();
+        Scanner lukija = new Scanner(System.in);
+        
+        while (true) {
+            int movementKey = lukija.nextInt();
+            if (movementKey == 9) break;
+            this.movement(movementKey);
+            this.openGlSuperRender();
+            
+        }
     }
 
 }
