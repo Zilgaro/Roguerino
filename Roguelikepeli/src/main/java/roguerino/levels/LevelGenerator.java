@@ -1,4 +1,4 @@
-package roguerino;
+package roguerino.levels;
 
 import java.util.Random;
 

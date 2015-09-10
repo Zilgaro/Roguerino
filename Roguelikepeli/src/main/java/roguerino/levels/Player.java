@@ -1,6 +1,6 @@
 
 
-package roguerino;
+package roguerino.levels;
 
 public class Player {
     

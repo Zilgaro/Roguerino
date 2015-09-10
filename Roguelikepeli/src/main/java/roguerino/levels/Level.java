@@ -1,6 +1,6 @@
 
 
-package roguerino;
+package roguerino.levels;
 
 public class Level {
     
@@ -21,11 +21,17 @@ public class Level {
     }
     
     public void setBlock(int x, int y, Block block) {
-        this.blocks[x][y] = block;
+        if (x <= this.width && y <= this.height) {
+            this.blocks[x][y] = block;
+        }
+ 
     }
 
     public Block getBlock(int x, int y) {
-        return this.blocks[x][y];
+        if (this.height >= y && this.width >= x) {
+            return this.blocks[x][y];
+        }
+        return null;
     }
 
     public int getHeight() {

@@ -1,5 +1,9 @@
 package roguerino;
 
+import roguerino.levels.Player;
+import roguerino.levels.Block;
+import roguerino.levels.Level;
+import roguerino.levels.LevelGenerator;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -51,6 +55,10 @@ public class Logic {
             System.out.println("");
         }
     }
+    
+    /* HUOM HUOM! Liikkuminen näyttää tässä vaiheessa aivan karsealta. 
+    * Tulen korjaaman asian keyEventeillä kunhan saan ruudun pystyyn.
+    */
 
     public void movement(int movementKey) {
 
@@ -83,7 +91,7 @@ public class Logic {
 
         }
 
-        //toimii ja voi ottaa mallia muihin
+       
         if (movementKey == 4 && validBlock(x + 1, y)) {
 
             this.player.setX(x + 1);
@@ -138,9 +146,16 @@ public class Logic {
         }
         return true;
     }
+    
+    //Tämä seuraavakin metodi on melko härski.
 
     public boolean validBlock(int x, int y, int movementKey) {
-        if (this.level.getBlock(x, y).isBlack()) {
+        
+        if (this.level.getHeight() < x || this.level.getHeight() < y) {
+            return false;
+        }
+        
+        if (this.level.getBlock(x, y).isBlack() ||  movementKey > 8 || movementKey < 1) {
             return false;
         }
 
@@ -176,11 +191,18 @@ public class Logic {
         this.player.setX(5);
         this.player.setY(5);
         this.openGlSuperRender();
+        int movementKey = 0;
         Scanner lukija = new Scanner(System.in);
         
         while (true) {
-            int movementKey = lukija.nextInt();
-            if (movementKey == 9) break;
+            
+            try {
+                movementKey = lukija.nextInt();
+            } catch (Exception e) {
+                break;
+            }
+            
+            if (movementKey == 0) break;
             this.movement(movementKey);
             this.openGlSuperRender();
             

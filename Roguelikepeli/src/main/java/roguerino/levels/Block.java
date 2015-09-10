@@ -1,13 +1,13 @@
 
 
-package roguerino;
+package roguerino.levels;
 
 
 public class Block {
     
     private Player player;
     private boolean black; //black tarkoittaa tyhjää johon ei voi astua
-    private boolean floor; //floor taas astuttava
+    private boolean floor; //floor taas astuttava rakennuksen sisällä (todo)
 
     public Block() {
         this.player = null;
@@ -22,6 +22,13 @@ public class Block {
     }
 
     public void setBlack(boolean black) {
+        if (this.floor) {
+            this.floor = false;
+        }
+        
+        if (this.player != null) {
+            this.player = null;
+        }
         this.black = black;
     }
 
@@ -30,7 +37,10 @@ public class Block {
     }
 
     public void setPlayer(Player player) { //null = ei pelaajaa
-        this.player = player;
+        if (!this.black) {
+            this.player = player;
+        }
+        
     }
 
     public boolean hasPlayer() { //Tarkistetaan, onko pelaaja blockin päällä
@@ -40,6 +50,9 @@ public class Block {
     }
 
     public void setFloor(boolean floor) {
+        if (this.black) {
+            this.black = false;
+        }
         this.floor = floor;
     }
 
