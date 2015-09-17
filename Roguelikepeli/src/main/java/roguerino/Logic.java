@@ -16,7 +16,7 @@ public class Logic {
 
     public Logic() {
         this.generator = new LevelGenerator();
-        this.level = generator.generateLevelEmpty(10, 10);
+        this.level = generator.generateLevelEmpty(50, 50);
         this.player = new Player();
         this.random = new Random();
     }
@@ -187,26 +187,14 @@ public class Logic {
     }
 
     public void run() {
-        this.level.getBlock(5, 5).setPlayer(this.player);
-        this.player.setX(5);
-        this.player.setY(5);
+        this.level.getBlock(25, 25).setPlayer(this.player);
+        this.player.setX(25);
+        this.player.setY(25);
         this.openGlSuperRender();
         int movementKey = 0;
         Scanner lukija = new Scanner(System.in);
         
-        while (true) {
-            
-            try {
-                movementKey = lukija.nextInt();
-            } catch (Exception e) {
-                break;
-            }
-            
-            if (movementKey == 0) break;
-            this.movement(movementKey);
-            this.openGlSuperRender();
-            
-        }
+        
     }
 
 }

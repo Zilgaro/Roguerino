@@ -22,6 +22,14 @@
 </dependencies>
 
 <build>
+    <resources>
+        <resource>
+            <directory>src/my-resources</directory>
+            <includes>
+                <include>spritesheet.png</include>
+            </includes>
+        </resource>
+    </resources>
     <plugins>
         <plugin>
             <artifactId>maven-compiler-plugin</artifactId>
