@@ -16,7 +16,7 @@ public class Logic {
 
     public Logic() {
         this.generator = new LevelGenerator();
-        this.level = generator.generateLevelEmpty(50, 50);
+        this.level = generator.generateLevelEmpty(30, 30);
         this.player = new Player();
         this.random = new Random();
     }

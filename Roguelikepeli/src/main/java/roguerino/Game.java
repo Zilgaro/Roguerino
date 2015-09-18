@@ -35,7 +35,7 @@ public class Game extends Canvas implements Runnable {
         this.logic.openGlSuperRender();
 
         ImageLoader loader = new ImageLoader();
-        spriteSheet = loader.load("src/my-resources/spritesheet.png");
+        spriteSheet = loader.load("my-resources/spritesheet.png");
 
         SpriteSheet ss = new SpriteSheet(spriteSheet);
         this.imageManager = new ImageManager(ss);
