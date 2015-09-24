@@ -6,6 +6,8 @@ import roguerino.levels.Level;
 import roguerino.levels.LevelGenerator;
 import java.util.Random;
 import java.util.Scanner;
+import roguerino.levels.Room;
+import roguerino.levels.RoomGenerator;
 
 public class Logic {
 
@@ -13,12 +15,14 @@ public class Logic {
     private Level level;
     private Player player;
     private Random random;
+    private RoomGenerator roomGenerator;
 
     public Logic() {
         this.generator = new LevelGenerator();
         this.level = generator.generateLevelEmpty(30, 30);
         this.player = new Player();
         this.random = new Random();
+        this.roomGenerator = new RoomGenerator();
     }
 
     public Level getLevel() {
@@ -185,16 +189,49 @@ public class Logic {
 
         return true;
     }
+    
+    private void createRooms(int i) {
+        while (i > 0) {
+            Room room = this.roomGenerator.generateRandomRoom();
+            if (placeRoom(room)) {
+                i--;
+            }
+        }
+    }
+
+    private boolean placeRoom(Room room) {
+        int x = random.nextInt(this.level.getWidth() - room.getWidth());
+        int y = random.nextInt(this.level.getHeight() - room.getHeight());
+        if (checkIfAreaIsEmpty(x, y, room.getWidth(), room.getHeight())) {
+            for (int j = 0; j < room.getHeight(); j++) {
+                for (int k = 0; k < room.getWidth(); k++) {
+                    this.level.setBlock(x + k, y + j, room.getBlock(k, j));
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean checkIfAreaIsEmpty(int x, int y, int width, int height) {
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                Block block = this.level.getBlock(x + i, y + j);
+                if (block.isDoor() || block.isWall() || block.hasPlayer() || block.isFloor()) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
     public void run() {
         this.level.getBlock(25, 25).setPlayer(this.player);
         this.player.setX(25);
         this.player.setY(25);
-        this.openGlSuperRender();
-        int movementKey = 0;
-        Scanner lukija = new Scanner(System.in);
-        
-        
+        createRooms(25);
+        this.openGlSuperRender();       
     }
 
 }

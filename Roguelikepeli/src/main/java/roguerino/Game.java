@@ -103,8 +103,12 @@ public class Game extends Canvas implements Runnable {
                 Block block = this.logic.getBlock(x, y);
                 if (block.isFloor()) {
                     g.drawImage(imageManager.floor, (j + FOV) * 32 * SCALE, (i + FOV) * 32 * SCALE, 32 * SCALE, 32 * SCALE, null);
-                } else if (block.isBlack()) {
+                } else if (block.isDoor()) {
+                    g.drawImage(imageManager.door, (j + FOV) * 32 * SCALE, (i + FOV) * 32 * SCALE, 32 * SCALE, 32 * SCALE, null);
+                } else if (block.isBlack() && !block.isWall()) {
                     g.drawImage(imageManager.black, (j + FOV) * 32 * SCALE, (i + FOV) * 32 * SCALE, 32 * SCALE, 32 * SCALE, null);
+                } else if (block.isWall()) {
+                    g.drawImage(imageManager.wall, (j + FOV) * 32 * SCALE, (i + FOV) * 32 * SCALE, 32 * SCALE, 32 * SCALE, null);
                 } else {
                     g.drawImage(imageManager.empty, (j + FOV) * 32 * SCALE, (i + FOV) * 32 * SCALE, 32 * SCALE, 32 * SCALE, null);
                 }

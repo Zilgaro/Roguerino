@@ -13,7 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
       
-         Game game = new Game();
+        Game game = new Game();
         game.setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
         game.setMaximumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
         game.setMinimumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));

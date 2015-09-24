@@ -1,13 +1,13 @@
 package roguerino.levels;
 
-import java.util.Random;
+
 
 public class LevelGenerator {
 
-    private Random random;
+
 
     public LevelGenerator() {
-        this.random = new Random();
+
     }
 
     /*
