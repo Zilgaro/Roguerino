@@ -1,6 +1,6 @@
 package roguerino.levels;
 
-
+/** Luo levelin asettemalla sen täyteen 'tyhjiä' blockeja. */
 
 public class LevelGenerator {
 

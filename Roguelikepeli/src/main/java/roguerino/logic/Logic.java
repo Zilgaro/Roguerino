@@ -1,4 +1,4 @@
-package roguerino;
+package roguerino.logic;
 
 import roguerino.levels.Player;
 import roguerino.levels.Block;

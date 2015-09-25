@@ -1,6 +1,9 @@
 
 package roguerino.levels;
 
+/** Room-luokka on toteutukseltaan hieman samanlainen, kuin Level-luokka. Sitä 
+ * voikin pitää Ns. mini-levelinä kentän sisällä.
+ */
 public class Room {
     private int width;
     private int height;
@@ -17,8 +20,7 @@ public class Room {
                 this.blocks[j][i]= new Block();
             }
         }
-    }
-    
+    }  
     public void setBlock(Block block, int x, int y){
         this.blocks[x][y]=block;
     }

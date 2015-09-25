@@ -49,6 +49,10 @@
                 <artifactId>pitest-maven</artifactId>
                 <version>1.1.4</version>
                 <configuration>
+                    <targetClasses>
+                        <param>roguerino.levels.*</param>
+                        <param>roguerino.logic.*</param>
+                    </targetClasses>
                     <targetTests>
                         <param>roguerino.*</param>
                     </targetTests>                   

@@ -2,6 +2,10 @@
 
 package roguerino.levels;
 
+/**
+ * Pelikentän rakennuspalikka, pitää sisällään boolean-tyyppisenä oman "tyyppinsä"
+ * Tuntee, onko pelaaja/vihollinen (TODO) kyseisen palikan päällä. 
+ */
 
 public class Block {
     
@@ -30,9 +34,11 @@ public class Block {
         this.door = door;
     }
 
+   
     public void setBlack(boolean black) {
-        if (this.floor) {
+        if (this.floor || this.door) {
             this.floor = false;
+            this.door = false;
         }
         
         if (this.player != null) {
@@ -46,7 +52,7 @@ public class Block {
     }
 
     public void setPlayer(Player player) { //null = ei pelaajaa
-        if (!this.black) {
+        if (!this.black && !this.wall) {
             this.player = player;
         }
         
@@ -84,15 +90,6 @@ public class Block {
     public boolean isDoor() {
         return door;
     }
-   
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     

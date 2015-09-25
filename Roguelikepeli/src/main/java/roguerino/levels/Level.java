@@ -2,6 +2,9 @@
 
 package roguerino.levels;
 
+/** Tämä luokka huolehtii kentän perustoiminnallisuudesta, luomisesta, sekä sen
+ * block-rakenteen tallentamisesta.
+ */
 public class Level {
     
     private Block[][] blocks;

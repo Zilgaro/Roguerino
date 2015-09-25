@@ -3,7 +3,7 @@ package roguerino.movement;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import roguerino.Logic;
+import roguerino.logic.Logic;
 
 public class MouseManager implements MouseListener {
 

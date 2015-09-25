@@ -7,15 +7,44 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import roguerino.logic.Logic;
+import roguerino.levels.Block;
+import roguerino.levels.Level;
+import roguerino.levels.Player;
 
-/**
- *
- * @author Zilgaro
- */
+
 public class LevelsTest {
+    private Logic test;
     
     public LevelsTest() {
+        this.test = new Logic();
     }
+    
+    @Test
+    public void levelGetBlockFromOutOfBounds() {
+        Level testLevel = this.test.getLevel();
+        
+        try {
+            testLevel.getBlock(213123, 213123);
+        } catch (Exception e) {
+            fail("You tried to get a block from some galaxy far far away, didn't work so well");
+        }
+    }
+    
+    @Test
+    public void levelBlockSetPlayerToWallOrBlack() {
+        Level testLevel = this.test.getLevel();
+        Block block = new Block();
+        block.setBlack(true);
+        block.setWall(true);
+        testLevel.setBlock(0, 0, block);
+        Player player = new Player();
+        testLevel.getBlock(0, 0).setPlayer(player);
+        
+        assertFalse("A block that is a wall and/or black can't have a player", testLevel.getBlock(0, 0).hasPlayer());
+        
+    }
+    
     
     @BeforeClass
     public static void setUpClass() {
