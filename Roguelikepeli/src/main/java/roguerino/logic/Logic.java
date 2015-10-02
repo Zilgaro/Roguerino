@@ -8,6 +8,7 @@ import java.util.Random;
 import java.util.Scanner;
 import roguerino.levels.Room;
 import roguerino.levels.RoomGenerator;
+import roguerino.levels.EnemyGenerator;
 
 public class Logic {
 
@@ -16,6 +17,7 @@ public class Logic {
     private Player player;
     private Random random;
     private RoomGenerator roomGenerator;
+    private EnemyGenerator enemyGenerator;
 
     public Logic() {
         this.generator = new LevelGenerator();
@@ -231,7 +233,8 @@ public class Logic {
         this.player.setX(25);
         this.player.setY(25);
         createRooms(25);
-        this.openGlSuperRender();       
+        this.openGlSuperRender();  
+        this.enemyGenerator.createEnemies(this.level);
     }
 
 }

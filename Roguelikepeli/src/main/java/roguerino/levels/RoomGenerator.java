@@ -74,9 +74,9 @@ public class RoomGenerator {
          noShitHereBlock.setBlack(false);
          */
         
-        room.setBlock(new Block(null, false, false, false, false), 0, 0);
-        room.setBlock(new Block(null, false, false, false, false), 0, 1);
-        room.setBlock(new Block(null, false, false, false, false), 0, 2);
+        room.setBlock(new Block(null, null, false, false, false, false), 0, 0);
+        room.setBlock(new Block(null, null, false, false, false, false), 0, 1);
+        room.setBlock(new Block(null, null, false, false, false, false), 0, 2);
 
         Random r = new Random();
         int a = r.nextInt(4);

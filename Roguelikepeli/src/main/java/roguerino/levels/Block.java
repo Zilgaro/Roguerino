@@ -2,14 +2,17 @@
 
 package roguerino.levels;
 
-/**
- * Pelikentän rakennuspalikka, pitää sisällään boolean-tyyppisenä oman "tyyppinsä"
- * Tuntee, onko pelaaja/vihollinen (TODO) kyseisen palikan päällä. 
- */
+
 
 public class Block {
     
+ /**
+ * Pelikentän rakennuspalikka, pitää sisällään boolean-tyyppisenä oman "tyyppinsä"
+ * Tuntee, onko pelaaja/vihollinen (TODO) kyseisen palikan päällä. 
+ */
+    
     private Player player;
+    private Enemy enemy;
     private boolean black; //black tarkoittaa tyhjää johon ei voi astua
     private boolean floor; //floor taas astuttava rakennuksen sisällä (todo)
     private boolean wall; //tässä tilanteessa wallin tulee myös olla black (Pitää selvittää miten blockin saisi määriteltyä enumtyyppeinä)
@@ -19,6 +22,7 @@ public class Block {
     //päästäkää minut pahasta
     public Block() {
         this.player = null;
+        this.enemy = null;
         this.black = true;
         this.floor = false;
         this.wall = false;
@@ -26,7 +30,8 @@ public class Block {
     }
     
     //älkääkä saattako minua kiusaukseen
-    public Block(Player player, boolean black, boolean wall, boolean floor, boolean door) {
+    public Block(Player player, Enemy enemy, boolean black, boolean wall, boolean floor, boolean door) {
+        this.enemy = enemy;
         this.player = player;
         this.black = black;
         this.floor = floor;
@@ -56,6 +61,21 @@ public class Block {
             this.player = player;
         }
         
+    }
+
+    public void setEnemy(Enemy enemy) {
+        this.enemy = enemy;
+    }
+
+    public Enemy getEnemy() {
+        return enemy;
+    }
+    
+    public boolean hasEnemy() {
+        if (enemy == null) {
+            return false;
+        }
+        return true;
     }
 
     public boolean hasPlayer() { //Tarkistetaan, onko pelaaja blockin päällä
@@ -90,7 +110,5 @@ public class Block {
     public boolean isDoor() {
         return door;
     }
-    
-    
-    
+  
 }

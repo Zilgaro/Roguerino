@@ -110,12 +110,16 @@ public class Game extends Canvas implements Runnable {
                     g.drawImage(imageManager.black, (j + FOV) * 32 * SCALE, (i + FOV) * 32 * SCALE, 32 * SCALE, 32 * SCALE, null);
                 } else if (block.isWall()) {
                     g.drawImage(imageManager.wall, (j + FOV) * 32 * SCALE, (i + FOV) * 32 * SCALE, 32 * SCALE, 32 * SCALE, null);
-                } else {
+                }else {
                     g.drawImage(imageManager.empty, (j + FOV) * 32 * SCALE, (i + FOV) * 32 * SCALE, 32 * SCALE, 32 * SCALE, null);
                 }
             
                 if (block.hasPlayer()) {
                     g.drawImage(imageManager.player, (j + FOV) * 32 * SCALE, (i + FOV) * 32 * SCALE, 32 * SCALE, 32 * SCALE, null);
+                }
+                
+                if (block.hasEnemy()) {
+                    g.drawImage(imageManager.enemy, (j + FOV) * 32 * SCALE, (i + FOV) * 32 * SCALE, 32 * SCALE, 32 * SCALE, null);
                 }
 
             }
