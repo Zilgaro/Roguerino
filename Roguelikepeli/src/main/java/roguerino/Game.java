@@ -7,6 +7,7 @@ import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import javax.swing.JOptionPane;
 import roguerino.blocks.Blockerino;
 import roguerino.gfx.ImageLoader;
 import roguerino.gfx.ImageManager;
@@ -33,7 +34,6 @@ public class Game extends Canvas implements Runnable {
     public void init() {
         this.logic = new Logic();
         this.logic.run();
-        this.logic.openGlSuperRender();
 
         ImageLoader loader = new ImageLoader();
         spriteSheet = loader.load("my-resources/spritesheet.png");
@@ -84,6 +84,8 @@ public class Game extends Canvas implements Runnable {
         running = true;
         gameThread = new Thread(this);
         gameThread.start();
+        JOptionPane.showMessageDialog (null, "Peliä ohjataan hiirellä, olet musta mötikkä, punaiset"
+                + " rinkulat ovat vihuja. Tapa kaikki.", "Hau tu plei", JOptionPane.INFORMATION_MESSAGE);
     }
     
     public void render() {
@@ -116,6 +118,10 @@ public class Game extends Canvas implements Runnable {
             
                 if (block.hasPlayer()) {
                     g.drawImage(imageManager.player, (j + FOV) * 32 * SCALE, (i + FOV) * 32 * SCALE, 32 * SCALE, 32 * SCALE, null);
+                }
+                
+                if (block.hasEnemy()) {
+                    g.drawImage(imageManager.enemy,(j + FOV) * 32 * SCALE, (i + FOV) * 32 * SCALE, 32 * SCALE, 32 * SCALE, null);
                 }
 
             }

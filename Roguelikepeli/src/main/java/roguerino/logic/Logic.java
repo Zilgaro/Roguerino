@@ -6,9 +6,14 @@ import roguerino.levels.LevelGenerator;
 import java.util.Random;
 import roguerino.blocks.Black;
 import roguerino.blocks.Blockerino;
+import roguerino.levels.EnemyGenerator;
 import roguerino.levels.Room;
 import roguerino.levels.RoomGenerator;
 
+/**
+ * Tällä hetkellä logiikka hoitaa huoneiden generoinni kutsun, liikkumisen, vihollisten
+ * generoinnin kutsun sekä hoitaa, että huoneet osuvat tyhjiin paikkoihin levelin sisällä.
+ */
 public class Logic {
 
     private LevelGenerator generator;
@@ -16,6 +21,7 @@ public class Logic {
     private Player player;
     private Random random;
     private RoomGenerator roomGenerator;
+    private EnemyGenerator enemyGenerator;
 
     public Logic() {
         this.generator = new LevelGenerator();
@@ -23,6 +29,7 @@ public class Logic {
         this.player = new Player();
         this.random = new Random();
         this.roomGenerator = new RoomGenerator();
+        this.enemyGenerator = new EnemyGenerator();
     }
 
     public Level getLevel() {
@@ -42,27 +49,12 @@ public class Logic {
 
     }
     
-    public void openGlSuperRender() {
-        for (int i = 0; i < this.level.getHeight(); i++) {
-            for (int j = 0; j < this.level.getWidth(); j++) {
-
-                Blockerino block = this.level.getBlock(j, i);
-
-                if (block.hasPlayer()) {
-                    System.out.print("@");
-                } else if (block.getType().toLowerCase().contains("black")) {
-                    System.out.print("#");
-                } else {
-                    System.out.print(".");
-                }
-            }
-            System.out.println("");
-        }
-    }
     
-    /* HUOM HUOM! Liikkuminen näyttää tässä vaiheessa aivan karsealta. 
-    * Tulen korjaaman asian keyEventeillä kunhan saan ruudun pystyyn.
-    */
+    /**
+     * Liikkumisella kahdeksan mahdollista suuntaa, jokaisen liikkumisen yhteydessä
+     * tarkistetaan validBlock-metodilla, onko liikkuminen mahdollista
+     * MouseManager hyödyntää tätä metodia.
+     */
 
     public void movement(int movementKey) {
 
@@ -143,9 +135,7 @@ public class Logic {
 
         if (x < 0 || y < 0 || x > this.level.getWidth() - 1 || y > this.level.getHeight() - 1) { //ei voi mennä out of bounds;
             return false;
-        }
-
-        if (!this.level.getBlock(x, y).isWalkable()) {
+        } else if (!this.level.getBlock(x, y).isWalkable() || this.level.getBlock(x, y).hasEnemy()) {
             return false;
         }
         return true;
@@ -231,7 +221,7 @@ public class Logic {
         this.player.setX(25);
         this.player.setY(25);
         createRooms(25);
-        this.openGlSuperRender();       
+        enemyGenerator.createEnemies(this.level);      
     }
 
 }

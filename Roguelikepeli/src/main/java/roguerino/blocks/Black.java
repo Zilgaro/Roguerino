@@ -5,6 +5,7 @@
  */
 package roguerino.blocks;
 
+import roguerino.levels.Enemy;
 import roguerino.levels.Player;
 
 /**
@@ -42,6 +43,15 @@ public class Black extends Blockerino{
     @Override
     public boolean hasPlayer() {
         return this.player != null;
+    }
+
+    @Override
+    public void setEnemy(Enemy enemy) {
+    }
+
+    @Override
+    public boolean hasEnemy() {
+        return false;
     }
     
     

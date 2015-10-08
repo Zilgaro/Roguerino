@@ -5,6 +5,7 @@
  */
 package roguerino.blocks;
 
+import roguerino.levels.Enemy;
 import roguerino.levels.Player;
 
 /**
@@ -14,6 +15,7 @@ import roguerino.levels.Player;
 public class Empty extends Blockerino {
 
     public Empty() {
+        this.enemy = null;
         this.player = null;
         this.walkable = true;
         this.TYPE = "EMPTY";
@@ -41,6 +43,16 @@ public class Empty extends Blockerino {
     @Override
     public boolean hasPlayer() {
         return this.player != null;
+    }
+
+    @Override
+    public void setEnemy(Enemy enemy) {
+        this.enemy = enemy;
+    }
+
+    @Override
+    public boolean hasEnemy() {
+        return this.enemy != null;
     }
     
 }
