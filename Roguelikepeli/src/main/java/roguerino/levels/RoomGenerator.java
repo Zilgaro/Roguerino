@@ -38,45 +38,7 @@ public class RoomGenerator {
      WWW
      */
     public Room roomSmall() {
-        Room room = new Room(4, 3);
-        
-        Block wallBlock = new Block();
-        wallBlock.setWall(true);
-        
-        for (int i = 0; i < 3; i++) {
-            for (int j = 1; j < 4; j++) {
-                if (i == 1 && j == 1) { 
-                    continue;
-                } else if ( i == 1 && j == 2) {
-                    continue;
-                } else {
-                    room.setBlock(wallBlock, j, i);
-                }     
-            }    
-            }   
-        
-        Block doorBlock = new Block();
-        doorBlock.setBlack(false);
-        doorBlock.setDoor(true);
-        
-        room.setBlock(doorBlock, 1, 1);
-
-        
-        Block emptyBlock = new Block();
-        emptyBlock.setBlack(false);
-        emptyBlock.setFloor(true);
-        
-        room.setBlock(emptyBlock, 2, 1);
-
-        /*
-         Block nothingHere = new Block();
-         noShitHereBlock.setnothingHere(true);
-         noShitHereBlock.setBlack(false);
-         */
-        
-        room.setBlock(new Block(null, null, false, false, false, false), 0, 0);
-        room.setBlock(new Block(null, null, false, false, false, false), 0, 1);
-        room.setBlock(new Block(null, null, false, false, false, false), 0, 2);
+        Room room = new RoomSmall();       
 
         Random r = new Random();
         int a = r.nextInt(4);

@@ -1,8 +1,13 @@
 package roguerino.levels;
 
-public class LevelGenerator {
+import roguerino.blocks.Blockerino;
+import roguerino.blocks.Empty;
 
 /** Luo levelin asettemalla sen täyteen 'tyhjiä' blockeja. */
+
+public class LevelGenerator {
+
+
 
     public LevelGenerator() {
 
@@ -20,8 +25,7 @@ public class LevelGenerator {
         Level level = new Level(width, height);
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                Block block = new Block();
-                block.setBlack(false);
+                Blockerino block = new Empty();
                 level.setBlock(i, j, block);
             }
         }

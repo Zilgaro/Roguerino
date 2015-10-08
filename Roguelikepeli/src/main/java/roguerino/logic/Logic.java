@@ -1,14 +1,13 @@
 package roguerino.logic;
 
 import roguerino.levels.Player;
-import roguerino.levels.Block;
 import roguerino.levels.Level;
 import roguerino.levels.LevelGenerator;
 import java.util.Random;
-import java.util.Scanner;
+import roguerino.blocks.Black;
+import roguerino.blocks.Blockerino;
 import roguerino.levels.Room;
 import roguerino.levels.RoomGenerator;
-import roguerino.levels.EnemyGenerator;
 
 public class Logic {
 
@@ -17,7 +16,6 @@ public class Logic {
     private Player player;
     private Random random;
     private RoomGenerator roomGenerator;
-    private EnemyGenerator enemyGenerator;
 
     public Logic() {
         this.generator = new LevelGenerator();
@@ -35,9 +33,9 @@ public class Logic {
         return player;
     }
 
-    public Block getBlock(int x, int y) {
+    public Blockerino getBlock(int x, int y) {
         if (x < 0 || y < 0 || x > this.level.getWidth() - 1 || y > this.level.getHeight() - 1) {
-            return new Block();
+            return new Black();
         } else {
             return this.level.getBlock(x, y);
         }
@@ -48,11 +46,11 @@ public class Logic {
         for (int i = 0; i < this.level.getHeight(); i++) {
             for (int j = 0; j < this.level.getWidth(); j++) {
 
-                Block block = this.level.getBlock(j, i);
+                Blockerino block = this.level.getBlock(j, i);
 
                 if (block.hasPlayer()) {
                     System.out.print("@");
-                } else if (block.isBlack()) {
+                } else if (block.getType().toLowerCase().contains("black")) {
                     System.out.print("#");
                 } else {
                     System.out.print(".");
@@ -147,7 +145,7 @@ public class Logic {
             return false;
         }
 
-        if (this.level.getBlock(x, y).isBlack()) {
+        if (!this.level.getBlock(x, y).isWalkable()) {
             return false;
         }
         return true;
@@ -161,7 +159,7 @@ public class Logic {
             return false;
         }
         
-        if (this.level.getBlock(x, y).isBlack() ||  movementKey > 8 || movementKey < 1) {
+        if (!this.level.getBlock(x, y).isWalkable() ||  movementKey > 8 || movementKey < 1) {
             return false;
         }
 
@@ -219,8 +217,8 @@ public class Logic {
     private boolean checkIfAreaIsEmpty(int x, int y, int width, int height) {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                Block block = this.level.getBlock(x + i, y + j);
-                if (block.isDoor() || block.isWall() || block.hasPlayer() || block.isFloor()) {
+                Blockerino block = this.level.getBlock(x + i, y + j);
+                if ( !block.isWalkable() || block.hasPlayer() ) {
                     return false;
                 }
             }
@@ -233,8 +231,7 @@ public class Logic {
         this.player.setX(25);
         this.player.setY(25);
         createRooms(25);
-        this.openGlSuperRender();  
-        this.enemyGenerator.createEnemies(this.level);
+        this.openGlSuperRender();       
     }
 
 }

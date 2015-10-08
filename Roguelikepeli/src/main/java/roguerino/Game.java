@@ -7,10 +7,10 @@ import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import roguerino.blocks.Blockerino;
 import roguerino.gfx.ImageLoader;
 import roguerino.gfx.ImageManager;
 import roguerino.gfx.SpriteSheet;
-import roguerino.levels.Block;
 import roguerino.movement.MouseManager;
 
 
@@ -101,25 +101,21 @@ public class Game extends Canvas implements Runnable {
                 int x = this.logic.getPlayer().getX() + j;
                 int y = this.logic.getPlayer().getY() + i;
 
-                Block block = this.logic.getBlock(x, y);
-                if (block.isFloor()) {
+                Blockerino block = this.logic.getBlock(x, y);
+                if (block.getType().equals("FLOOR")) {
                     g.drawImage(imageManager.floor, (j + FOV) * 32 * SCALE, (i + FOV) * 32 * SCALE, 32 * SCALE, 32 * SCALE, null);
-                } else if (block.isDoor()) {
+                } else if (block.getType().equals("DOOR")) {
                     g.drawImage(imageManager.door, (j + FOV) * 32 * SCALE, (i + FOV) * 32 * SCALE, 32 * SCALE, 32 * SCALE, null);
-                } else if (block.isBlack() && !block.isWall()) {
+                } else if (block.getType().equals("BLACK")) {
                     g.drawImage(imageManager.black, (j + FOV) * 32 * SCALE, (i + FOV) * 32 * SCALE, 32 * SCALE, 32 * SCALE, null);
-                } else if (block.isWall()) {
+                } else if (block.getType().equals("WALL")) {
                     g.drawImage(imageManager.wall, (j + FOV) * 32 * SCALE, (i + FOV) * 32 * SCALE, 32 * SCALE, 32 * SCALE, null);
-                }else {
+                } else {
                     g.drawImage(imageManager.empty, (j + FOV) * 32 * SCALE, (i + FOV) * 32 * SCALE, 32 * SCALE, 32 * SCALE, null);
                 }
             
                 if (block.hasPlayer()) {
                     g.drawImage(imageManager.player, (j + FOV) * 32 * SCALE, (i + FOV) * 32 * SCALE, 32 * SCALE, 32 * SCALE, null);
-                }
-                
-                if (block.hasEnemy()) {
-                    g.drawImage(imageManager.enemy, (j + FOV) * 32 * SCALE, (i + FOV) * 32 * SCALE, 32 * SCALE, 32 * SCALE, null);
                 }
 
             }
