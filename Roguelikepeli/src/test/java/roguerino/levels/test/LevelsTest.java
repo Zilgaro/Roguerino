@@ -7,8 +7,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import roguerino.blocks.Blockerino;
+import roguerino.blocks.Wall;
 import roguerino.logic.Logic;
-import roguerino.levels.Block;
 import roguerino.levels.Level;
 import roguerino.levels.Player;
 
@@ -34,9 +35,7 @@ public class LevelsTest {
     @Test
     public void levelBlockSetPlayerToWallOrBlack() {
         Level testLevel = this.test.getLevel();
-        Block block = new Block();
-        block.setBlack(true);
-        block.setWall(true);
+        Blockerino block = new Wall();
         testLevel.setBlock(0, 0, block);
         Player player = new Player();
         testLevel.getBlock(0, 0).setPlayer(player);

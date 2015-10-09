@@ -1,4 +1,4 @@
-
+package roguerino;
 
 import java.io.ByteArrayInputStream;
 import org.junit.After;
@@ -8,8 +8,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import roguerino.Game;
+import roguerino.blocks.Black;
+import roguerino.blocks.Blockerino;
 import roguerino.logic.Logic;
-import roguerino.levels.Block;
 import roguerino.levels.Level;
 import roguerino.levels.Player;
 
@@ -34,7 +35,7 @@ public class RoguelikepeliTest {
     
     @Test
     public void creatingBlocksOutOfBounds() {
-        Block block = new Block();
+        Blockerino block = new Black();
         Level level = new Level(10,10);
         
         try {
@@ -67,7 +68,7 @@ public class RoguelikepeliTest {
     @Test
     public void logicGetBlockFromOutOfBounds() {
         try {
-            Block block = test.getBlock(1231, 123049);
+            Blockerino block = test.getBlock(1231, 123049);
         } catch (Exception e) {
             fail("Where did you go digging, I wonder?");
         }
@@ -83,12 +84,6 @@ public class RoguelikepeliTest {
         assertFalse("Validblock call with bad movementKey must be false", test.validBlock(9, 9, 9));
     }
     
-    @Test
-    public void blockSimultaneoslyBlackAndFloor() {
-        Block block = new Block();
-        block.setFloor(true);
-        assertFalse("Block can't be black and floor at the same time", block.isBlack());
-    }
     
     
     @Test

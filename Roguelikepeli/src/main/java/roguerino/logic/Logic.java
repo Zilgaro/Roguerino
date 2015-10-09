@@ -49,137 +49,6 @@ public class Logic {
 
     }
     
-    
-    /**
-     * Liikkumisella kahdeksan mahdollista suuntaa, jokaisen liikkumisen yhteydessä
-     * tarkistetaan validBlock-metodilla, onko liikkuminen mahdollista
-     * MouseManager hyödyntää tätä metodia.
-     */
-
-    public void movement(int movementKey) {
-
-        int y = this.player.getY();
-        int x = this.player.getX();
-
-        if (movementKey == 1 && this.validBlock(x, y, movementKey)) {
-
-            this.player.setX(x - 1);
-            this.player.setY(y - 1);
-            this.level.getBlock(x, y).setPlayer(null);
-            this.level.getBlock(x - 1, y - 1).setPlayer(this.player);
-
-        }
-
-        if (movementKey == 2 && this.validBlock(x, y - 1)) {
-
-            this.player.setY(y - 1);
-            this.level.getBlock(x, y).setPlayer(null);
-            this.level.getBlock(x, y - 1).setPlayer(this.player);
-
-        }
-
-        if (movementKey == 3 && this.validBlock(x, y, movementKey)) {
-
-            this.player.setX(x + 1);
-            this.player.setY(y - 1);
-            this.level.getBlock(x, y).setPlayer(null);
-            this.level.getBlock(x + 1, y - 1).setPlayer(this.player);
-
-        }
-
-       
-        if (movementKey == 4 && validBlock(x + 1, y)) {
-
-            this.player.setX(x + 1);
-            this.level.getBlock(x, y).setPlayer(null);
-            this.level.getBlock(x + 1, y).setPlayer(this.player);
-
-        }
-
-        if (movementKey == 5 && this.validBlock(x, y, movementKey)) {
-
-            this.player.setX(x + 1);
-            this.player.setY(y + 1);
-            this.level.getBlock(x, y).setPlayer(null);
-            this.level.getBlock(x + 1, y + 1).setPlayer(this.player);
-
-        }
-
-        if (movementKey == 6 && this.validBlock(x, y + 1)) {
-
-            this.player.setY(y + 1);
-            this.level.getBlock(x, y).setPlayer(null);
-            this.level.getBlock(x, y + 1).setPlayer(this.player);
-
-        }
-
-        if (movementKey == 7 && this.validBlock(x, y, movementKey)) {
-
-            this.player.setX(x - 1);
-            this.player.setY(y + 1);
-            this.level.getBlock(x, y).setPlayer(null);
-            this.level.getBlock(x - 1, y + 1).setPlayer(this.player);
-
-        }
-
-        if (movementKey == 8 && this.validBlock(x - 1, y)) {
-
-            this.player.setX(x - 1);
-            this.level.getBlock(x, y).setPlayer(null);
-            this.level.getBlock(x - 1, y).setPlayer(this.player);
-
-        }
-    }
-
-    public boolean validBlock(int x, int y) {
-
-        if (x < 0 || y < 0 || x > this.level.getWidth() - 1 || y > this.level.getHeight() - 1) { //ei voi mennä out of bounds;
-            return false;
-        } else if (!this.level.getBlock(x, y).isWalkable() || this.level.getBlock(x, y).hasEnemy()) {
-            return false;
-        }
-        return true;
-    }
-    
-    //Tämä seuraavakin metodi on melko härski.
-
-    public boolean validBlock(int x, int y, int movementKey) {
-        
-        if (this.level.getHeight() < x || this.level.getHeight() < y) {
-            return false;
-        }
-        
-        if (!this.level.getBlock(x, y).isWalkable() ||  movementKey > 8 || movementKey < 1) {
-            return false;
-        }
-
-        if (movementKey == 1) {
-            if (this.validBlock(x - 1, y) == false || this.validBlock(x, y - 1) == false || this.validBlock(x - 1, y - 1) == false) {
-                return false;
-            }
-        }
-
-        if (movementKey == 3) {
-            if (this.validBlock(x + 1, y) == false || this.validBlock(x, y - 1) == false || this.validBlock(x + 1, y - 1) == false) {
-                return false;
-            }
-        }
-
-        if (movementKey == 5) {
-            if (this.validBlock(x + 1, y) == false || this.validBlock(x, y + 1) == false || this.validBlock(x + 1, y + 1) == false) {
-                return false;
-            }
-        }
-
-        if (movementKey == 7) {
-            if (this.validBlock(x - 1, y) == false || this.validBlock(x, y + 1) == false || this.validBlock(x - 1, y + 1) == false) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-    
     private void createRooms(int i) {
         while (i > 0) {
             Room room = this.roomGenerator.generateRandomRoom();
@@ -208,7 +77,7 @@ public class Logic {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 Blockerino block = this.level.getBlock(x + i, y + j);
-                if ( !block.isWalkable() || block.hasPlayer() ) {
+                if ( !block.getType().equals("EMPTY") || block.hasPlayer() || block.hasEnemy() ) {
                     return false;
                 }
             }
@@ -217,7 +86,7 @@ public class Logic {
     }
 
     public void run() {
-        this.level.getBlock(25, 25).setPlayer(this.player);
+        this.level.getBlock(25, 25).setEntity(this.player);
         this.player.setX(25);
         this.player.setY(25);
         createRooms(25);

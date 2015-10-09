@@ -5,8 +5,10 @@
  */
 package roguerino.blocks;
 
-import roguerino.levels.Enemy;
+
+import roguerino.levels.Entity;
 import roguerino.levels.Player;
+
 
 /**
  *
@@ -14,14 +16,13 @@ import roguerino.levels.Player;
  */
 public abstract class Blockerino {
     boolean walkable;
-    Player player;
+    Entity entity;
     String TYPE;
-    Enemy enemy;
+    
     
     public abstract Player getPlayer();
     public abstract boolean hasPlayer();
-    public abstract void setPlayer(Player player);
-     public abstract void setEnemy(Enemy enemy);
+    public abstract void setEntity(Entity entity);
     public abstract boolean hasEnemy();
     public abstract boolean isWalkable();
     public abstract String getType();

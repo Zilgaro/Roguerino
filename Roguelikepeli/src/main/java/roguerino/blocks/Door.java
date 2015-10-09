@@ -6,6 +6,7 @@
 package roguerino.blocks;
 
 import roguerino.levels.Enemy;
+import roguerino.levels.Entity;
 import roguerino.levels.Player;
 
 /**
@@ -18,23 +19,31 @@ public class Door extends Blockerino{
 
     public Door() {
         this.TYPE = "DOOR";
-        this.player = null;
-        this.enemy = null;
+        this.entity = null;
         this.walkable = true;
     }
     @Override
     public Player getPlayer() {
-        return this.player;
+        
+        if (this.entity == null) {
+            return null;
+        }
+        
+        if (this.entity.getType().equals("PLAYER")) {
+            return (Player) entity;
+        }
+        return null;
     }
 
     @Override
     public boolean hasPlayer() {
-        return this.player != null;
+ 
+        return this.getPlayer() != null;
     }
 
     @Override
-    public void setPlayer(Player player) {
-        this.player = player;
+    public void setEntity(Entity entity) {
+        this.entity = entity;
     }
 
     @Override
@@ -46,15 +55,15 @@ public class Door extends Blockerino{
     public String getType() {
         return this.TYPE;
     }
-
-    @Override
-    public void setEnemy(Enemy enemy) {
-        this.enemy = enemy;
-    }
-
+ 
     @Override
     public boolean hasEnemy() {
-        return enemy != null;
+        if ( entity == null) {
+            return false;
+        }
+        
+        return entity.getType().equals("ENEMY");
     }
-    
+
+   
 }

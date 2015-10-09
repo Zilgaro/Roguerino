@@ -18,7 +18,7 @@ public class Main {
         game.setMaximumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
         game.setMinimumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
 
-        JFrame frame = new JFrame("Ronin");
+        JFrame frame = new JFrame("Roguerino");
         frame.setSize(WIDTH * SCALE, HEIGHT * SCALE);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
