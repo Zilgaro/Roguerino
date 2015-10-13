@@ -19,6 +19,7 @@ public class Black extends Blockerino{
     public Black() {
         this.walkable = false;
         this.TYPE = "BLACK";
+        this.entity = null;
     }
 
     @Override

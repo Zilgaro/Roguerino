@@ -20,8 +20,8 @@ public class EnemyGenerator {
      * sisällä olevat viholliset ovat melko harvinaisia.
      */
     
-    public void createEnemies(Level level) {
-        int numberOfEnemies = 20;
+    public void createEnemies(Level level, int howMany) {
+        int numberOfEnemies = howMany;
         while (numberOfEnemies > 0) {
             int x = this.random.nextInt(level.getWidth());
             int y = this.random.nextInt(level.getHeight());

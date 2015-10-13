@@ -38,7 +38,7 @@ public class LevelsTest {
         Blockerino block = new Wall();
         testLevel.setBlock(0, 0, block);
         Player player = new Player();
-        testLevel.getBlock(0, 0).setPlayer(player);
+        testLevel.getBlock(0, 0).setEntity(player);
         
         assertFalse("A block that is a wall and/or black can't have a player", testLevel.getBlock(0, 0).hasPlayer());
         

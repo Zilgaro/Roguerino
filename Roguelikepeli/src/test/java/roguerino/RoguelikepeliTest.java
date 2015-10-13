@@ -13,13 +13,16 @@ import roguerino.blocks.Blockerino;
 import roguerino.logic.Logic;
 import roguerino.levels.Level;
 import roguerino.levels.Player;
+import roguerino.logic.MovementLogic;
 
 
 public class RoguelikepeliTest {
     
     private Logic test;
+    private MovementLogic movLogic;
     public RoguelikepeliTest() {
         this.test = new Logic();
+        this.movLogic = new MovementLogic(test.getPlayer(), test.getLevel());
     }
     
     @Test
@@ -76,12 +79,12 @@ public class RoguelikepeliTest {
     
     @Test
     public void logicValidTestFromOutOfBounds() {        
-        assertFalse("Validblock from out of bounds must be false", test.validBlock(2323, 23123));
+        assertFalse("Validblock from out of bounds must be false", movLogic.validBlock(2323, 23123));
     }
     
     @Test
     public void logicValidTestWithBadMovementKey() {
-        assertFalse("Validblock call with bad movementKey must be false", test.validBlock(9, 9, 9));
+        assertFalse("Validblock call with bad movementKey must be false", movLogic.validBlock(9, 9, 9));
     }
     
     
@@ -89,7 +92,7 @@ public class RoguelikepeliTest {
     @Test
     public void logicValidBlockWithOutOfBoundsCoordinatesAndValidMovement() {
 
-        assertFalse("Block can't be valid if it is out of bounds", test.validBlock(23423423, 324234234, 5));
+        assertFalse("Block can't be valid if it is out of bounds", movLogic.validBlock(23423423, 324234234, 5));
     
     }
     @BeforeClass

@@ -6,6 +6,11 @@ import java.awt.event.MouseListener;
 import roguerino.logic.Logic;
 import roguerino.logic.MovementLogic;
 
+/**
+ * Tämä luokka mahdollistaa hiiren kuuntelemisen ja toteuttaa liikkumisen 
+ * Logic-luokan muuttujien ja MovementLogic luokan toiminnallisuutta hyödyntäen.
+ */
+
 public class MouseManager implements MouseListener {
 
     private Logic logic;
@@ -21,6 +26,13 @@ public class MouseManager implements MouseListener {
 
     }
 
+    /**
+     * Tällä hetkellä, koska pathfinding-algoritmia ei ole, liikkuminen toteutetaan
+     * graafisessa käyttöliittymässä kuuntelemalla pelaajan ympärillä oleville
+     * pikseleille tulevia hiiren klikkauksia ja liikutaan yhden blockin verran.
+     * @param e 
+     */
+    
     @Override
     public void mousePressed(MouseEvent e) {
         if (e.getX() < 320) {

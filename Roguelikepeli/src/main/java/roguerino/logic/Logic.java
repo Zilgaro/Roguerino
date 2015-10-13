@@ -90,7 +90,7 @@ public class Logic {
         this.player.setX(25);
         this.player.setY(25);
         createRooms(25);
-        enemyGenerator.createEnemies(this.level);      
+        enemyGenerator.createEnemies(this.level, 20);      
     }
 
 }

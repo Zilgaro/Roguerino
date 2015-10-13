@@ -40,7 +40,12 @@ public class Floor extends Blockerino {
 
     @Override
     public void setEntity(Entity entity) {
-        this.entity = entity;
+        if (this.entity == null) {
+            this.entity = entity;
+          //Selvennys: halutaan, että nulliksi laittaminen (liikkuminen) on mahdollista.
+        } else if (entity == null) {
+            this.entity = null;
+        }
     }
 
     @Override
