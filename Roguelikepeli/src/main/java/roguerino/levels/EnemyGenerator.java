@@ -1,5 +1,7 @@
 package roguerino.levels;
 
+import java.util.ArrayList;
+import roguerino.entities.Enemy;
 import java.util.Random;
 import roguerino.blocks.Blockerino;
 
@@ -18,9 +20,11 @@ public class EnemyGenerator {
     /**
      * Metodin ideana on luoda satunnaisiin paikkoihin vihollisia, huoneiden
      * sisällä olevat viholliset ovat melko harvinaisia.
+     * @return Palautetaan ArrayList, jonka jäseninä juuri paikoilleen asetetut viholliset
      */
     
-    public void createEnemies(Level level, int howMany) {
+    public ArrayList<Enemy> createEnemies(Level level, int howMany) {
+        ArrayList<Enemy> enemies = new ArrayList<>();
         int numberOfEnemies = howMany;
         while (numberOfEnemies > 0) {
             int x = this.random.nextInt(level.getWidth());
@@ -30,16 +34,21 @@ public class EnemyGenerator {
             if (block.isWalkable() && !block.getType().equals("DOOR")) {
                 if (block.getType().equals("FLOOR")) {
                     if (random.nextInt(100) > 80) {
-                        block.setEntity(new Enemy(x,y));
+                        Enemy newbie = new Enemy(x,y);
+                        enemies.add(newbie);
+                        block.setEntity(newbie);
                         numberOfEnemies--;
                     }
                 } else {
                     if (random.nextInt(100) > 91) {
-                        block.setEntity(new Enemy(x,y));
+                        Enemy newbie = new Enemy(x,y);
+                        enemies.add(newbie);
+                        block.setEntity(newbie);
                         numberOfEnemies--;
                     }
                 }
             }
         }
+        return enemies;
     }
 }

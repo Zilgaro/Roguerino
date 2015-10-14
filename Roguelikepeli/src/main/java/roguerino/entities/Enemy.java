@@ -1,5 +1,7 @@
 
-package roguerino.levels;
+package roguerino.entities;
+
+import roguerino.entities.Entity;
 
 
 public class Enemy implements Entity{
@@ -18,6 +20,11 @@ public class Enemy implements Entity{
     public void kill() {
         this.alive = false;
     }
+    
+    public boolean isAlive() {
+        return this.alive;
+    }
+    
 
     @Override
     public int getX() {

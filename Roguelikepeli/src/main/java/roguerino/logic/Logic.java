@@ -1,11 +1,14 @@
 package roguerino.logic;
 
-import roguerino.levels.Player;
+import roguerino.movement.EnemyAi;
+import java.util.ArrayList;
+import roguerino.entities.Player;
 import roguerino.levels.Level;
 import roguerino.levels.LevelGenerator;
 import java.util.Random;
 import roguerino.blocks.Black;
 import roguerino.blocks.Blockerino;
+import roguerino.entities.Enemy;
 import roguerino.levels.EnemyGenerator;
 import roguerino.levels.Room;
 import roguerino.levels.RoomGenerator;
@@ -22,6 +25,8 @@ public class Logic {
     private Random random;
     private RoomGenerator roomGenerator;
     private EnemyGenerator enemyGenerator;
+    private EnemyAi enemyAi;
+    private ArrayList<Enemy> enemies;
 
     public Logic() {
         this.generator = new LevelGenerator();
@@ -30,6 +35,7 @@ public class Logic {
         this.random = new Random();
         this.roomGenerator = new RoomGenerator();
         this.enemyGenerator = new EnemyGenerator();
+        this.enemyAi = new EnemyAi(this.level);
     }
 
     public Level getLevel() {
@@ -38,6 +44,14 @@ public class Logic {
 
     public Player getPlayer() {
         return player;
+    }
+
+    public EnemyAi getEnemyAi() {
+        return enemyAi;
+    }
+
+    public ArrayList<Enemy> getEnemies() {
+        return enemies;
     }
 
     public Blockerino getBlock(int x, int y) {
@@ -49,6 +63,11 @@ public class Logic {
 
     }
     
+    /**
+     * Luo halutun määrän huoneita generaattorin avulla.
+     * @param i Haluttu määrä
+     */
+    
     private void createRooms(int i) {
         while (i > 0) {
             Room room = this.roomGenerator.generateRandomRoom();
@@ -57,7 +76,14 @@ public class Logic {
             }
         }
     }
-
+    
+    
+    /**
+     * Asettaa huoneen satunnaiseen paikkaan kentässä, käyttää checkIfAreaIsEmpty
+     * metodia varmistaakseen paikan kelpoisuuden.
+     * @param room annettu huone
+     * @return 
+     */
     private boolean placeRoom(Room room) {
         int x = random.nextInt(this.level.getWidth() - room.getWidth());
         int y = random.nextInt(this.level.getHeight() - room.getHeight());
@@ -73,6 +99,14 @@ public class Logic {
         }
     }
 
+    /**
+     * Metodi tarkistaa, onko haluttu paikka huoneelle vapaa.
+     * @param x 
+     * @param y
+     * @param width huoneen leveys
+     * @param height huoneen korkeus
+     * @return 
+     */
     private boolean checkIfAreaIsEmpty(int x, int y, int width, int height) {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
@@ -84,13 +118,15 @@ public class Logic {
         }
         return true;
     }
+    
+    
 
     public void run() {
         this.level.getBlock(25, 25).setEntity(this.player);
         this.player.setX(25);
         this.player.setY(25);
         createRooms(25);
-        enemyGenerator.createEnemies(this.level, 20);      
+        this.enemies = enemyGenerator.createEnemies(this.level, 20);      
     }
 
 }

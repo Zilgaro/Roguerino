@@ -1,6 +1,8 @@
 
 
-package roguerino.levels;
+package roguerino.entities;
+
+import roguerino.entities.Entity;
 
 public class Player implements Entity {
     

@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package roguerino.blocks;
 
-import roguerino.levels.Enemy;
-import roguerino.levels.Entity;
-import roguerino.levels.Player;
+import roguerino.entities.Enemy;
+import roguerino.entities.Entity;
+import roguerino.entities.Player;
 
 /**
  *
@@ -65,5 +60,16 @@ public class Floor extends Blockerino {
         }
         
         return entity.getType().equals("ENEMY");
+    }
+    
+    @Override
+    public Enemy getEnemy() {
+        if (this.entity != null) {
+
+            if (this.entity.getType().equals("ENEMY")) {
+                return (Enemy) this.entity;
+            }
+        }
+        return null;
     }
 }

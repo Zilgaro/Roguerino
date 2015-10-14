@@ -16,9 +16,9 @@ import roguerino.blocks.Black;
 import roguerino.blocks.Blockerino;
 import roguerino.blocks.Empty;
 import roguerino.blocks.Wall;
-import roguerino.levels.Enemy;
+import roguerino.entities.Enemy;
 import roguerino.levels.Level;
-import roguerino.levels.Player;
+import roguerino.entities.Player;
 import roguerino.logic.Logic;
 
 

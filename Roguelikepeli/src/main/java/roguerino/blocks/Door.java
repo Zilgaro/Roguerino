@@ -5,30 +5,29 @@
  */
 package roguerino.blocks;
 
-import roguerino.levels.Enemy;
-import roguerino.levels.Entity;
-import roguerino.levels.Player;
+import roguerino.entities.Enemy;
+import roguerino.entities.Entity;
+import roguerino.entities.Player;
 
 /**
  *
  * @author Zilgaro
  */
-public class Door extends Blockerino{
-
-    
+public class Door extends Blockerino {
 
     public Door() {
         this.TYPE = "DOOR";
         this.entity = null;
         this.walkable = true;
     }
+
     @Override
     public Player getPlayer() {
-        
+
         if (this.entity == null) {
             return null;
         }
-        
+
         if (this.entity.getType().equals("PLAYER")) {
             return (Player) entity;
         }
@@ -37,7 +36,7 @@ public class Door extends Blockerino{
 
     @Override
     public boolean hasPlayer() {
- 
+
         return this.getPlayer() != null;
     }
 
@@ -45,7 +44,7 @@ public class Door extends Blockerino{
     public void setEntity(Entity entity) {
         if (this.entity == null) {
             this.entity = entity;
-          //Selvennys: halutaan, että nulliksi laittaminen (liikkuminen) on mahdollista.
+            //Selvennys: halutaan, että nulliksi laittaminen (liikkuminen) on mahdollista.
         } else if (entity == null) {
             this.entity = null;
         }
@@ -60,15 +59,25 @@ public class Door extends Blockerino{
     public String getType() {
         return this.TYPE;
     }
- 
+
     @Override
     public boolean hasEnemy() {
-        if ( entity == null) {
+        if (entity == null) {
             return false;
         }
-        
+
         return entity.getType().equals("ENEMY");
     }
 
-   
+    @Override
+    public Enemy getEnemy() {
+        if (this.entity != null) {
+
+            if (this.entity.getType().equals("ENEMY")) {
+                return (Enemy) this.entity;
+            }
+        }
+        return null;
+    }
+
 }

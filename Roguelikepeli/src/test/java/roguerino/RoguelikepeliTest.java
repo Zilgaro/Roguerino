@@ -12,7 +12,7 @@ import roguerino.blocks.Black;
 import roguerino.blocks.Blockerino;
 import roguerino.logic.Logic;
 import roguerino.levels.Level;
-import roguerino.levels.Player;
+import roguerino.entities.Player;
 import roguerino.logic.MovementLogic;
 
 
@@ -20,9 +20,10 @@ public class RoguelikepeliTest {
     
     private Logic test;
     private MovementLogic movLogic;
+    
     public RoguelikepeliTest() {
         this.test = new Logic();
-        this.movLogic = new MovementLogic(test.getPlayer(), test.getLevel());
+        this.movLogic = new MovementLogic(test.getLevel());
     }
     
     @Test

@@ -1,18 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package roguerino.blocks;
 
 
-import roguerino.levels.Entity;
-import roguerino.levels.Player;
+import roguerino.entities.Enemy;
+import roguerino.entities.Entity;
+import roguerino.entities.Player;
 
 
 /**
- *
- * @author Zilgaro
+ *Yläluokka jonka kaikki nykyiset ja tulevat blockit tulevat toteuttamaan.
  */
 public abstract class Blockerino {
     boolean walkable;
@@ -21,6 +17,7 @@ public abstract class Blockerino {
     
     
     public abstract Player getPlayer();
+    public abstract Enemy getEnemy();
     public abstract boolean hasPlayer();
     public abstract void setEntity(Entity entity);
     public abstract boolean hasEnemy();

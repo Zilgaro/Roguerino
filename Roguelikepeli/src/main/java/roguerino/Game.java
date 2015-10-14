@@ -49,7 +49,7 @@ public class Game extends Canvas implements Runnable {
     public void run() {
         init();
         long lastTime = System.nanoTime();
-        final double amountOfTicks = 60D;
+        final double amountOfTicks = 1D;
         double ns = 1000000000 / amountOfTicks;
         double delta = 0;
 
@@ -58,9 +58,11 @@ public class Game extends Canvas implements Runnable {
             delta += (now - lastTime) / ns;
             lastTime = now;
             if (delta >= 1) {
+                logic.getEnemyAi().run(logic.getEnemies());
                 delta--;
             }
             render();
+            
         }
         stop();
     }

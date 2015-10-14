@@ -11,7 +11,7 @@ import roguerino.blocks.Blockerino;
 import roguerino.blocks.Wall;
 import roguerino.logic.Logic;
 import roguerino.levels.Level;
-import roguerino.levels.Player;
+import roguerino.entities.Player;
 
 
 public class LevelsTest {
