@@ -49,7 +49,7 @@ public class Game extends Canvas implements Runnable {
     public void run() {
         init();
         long lastTime = System.nanoTime();
-        final double amountOfTicks = 1D;
+        final double amountOfTicks = 2D;
         double ns = 1000000000 / amountOfTicks;
         double delta = 0;
 
@@ -58,7 +58,11 @@ public class Game extends Canvas implements Runnable {
             delta += (now - lastTime) / ns;
             lastTime = now;
             if (delta >= 1) {
-                logic.getEnemyAi().run(logic.getEnemies());
+                if(logic.getEnemyAi().run(logic.getEnemies())) {
+                    JOptionPane.showMessageDialog (null, "I hope you're happy now.", "You are a monster", JOptionPane.INFORMATION_MESSAGE);
+                    System.exit(0);
+                }
+                
                 delta--;
             }
             render();

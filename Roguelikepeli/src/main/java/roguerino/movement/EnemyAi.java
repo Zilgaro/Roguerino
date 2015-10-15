@@ -21,16 +21,20 @@ public  class EnemyAi {
     
     }
     
-    public void run(ArrayList<Enemy> enemies) {
+    public boolean run(ArrayList<Enemy> enemies) {
         
-            
+            int deadCount = 0;
             for (Enemy enemy : enemies) {
+                
                 if (!enemy.isAlive()) {
+                    deadCount++;
                     continue;
                 }
                 int movementKey = random.nextInt(8);
                 movLogic.movement(movementKey, enemy);
             }
+            
+            return deadCount == enemies.size();
         
     }
 }
