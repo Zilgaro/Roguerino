@@ -11,15 +11,12 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import roguerino.Game;
 import roguerino.blocks.Black;
 import roguerino.blocks.Blockerino;
 import roguerino.blocks.Empty;
 import roguerino.blocks.Wall;
 import roguerino.entities.Enemy;
-import roguerino.levels.Level;
 import roguerino.entities.Player;
-import roguerino.logic.Logic;
 
 
 /**

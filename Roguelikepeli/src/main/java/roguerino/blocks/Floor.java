@@ -5,8 +5,7 @@ import roguerino.entities.Entity;
 import roguerino.entities.Player;
 
 /**
- *
- * @author Zilgaro
+ * Huoneiden sisällä olevan lattian luokka.
  */
 public class Floor extends Blockerino {
 

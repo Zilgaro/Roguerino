@@ -7,7 +7,9 @@ import roguerino.entities.Enemy;
 import roguerino.levels.Level;
 import roguerino.logic.MovementLogic;
 
-
+/**
+ * "Tekoäly" vihollisten liikuttamiseen
+ */
 public  class EnemyAi {
     
     private MovementLogic movLogic;
@@ -21,6 +23,13 @@ public  class EnemyAi {
     
     }
     
+    /**
+     * Liikuttaa kaikkia eläviä tason vihollisia satunnaiseen suuntaan.
+     * @param enemies EnemyGeneratorin createEnemies()-metodin luoma lista kaikista tason
+     * vihollisista, jonka Logic-luokan run() -metodi ottaa talteen sitä ajettaessa.
+     * 
+     * @return True jos kaikki viholliset on merkitty tapetuiksi.
+     */
     public boolean run(ArrayList<Enemy> enemies) {
         
             int deadCount = 0;

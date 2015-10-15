@@ -20,6 +20,8 @@ public class EnemyGenerator {
     /**
      * Metodin ideana on luoda satunnaisiin paikkoihin vihollisia, huoneiden
      * sisällä olevat viholliset ovat melko harvinaisia.
+     * @param level Leveli, jolle viholliset generoidaan
+     * @param howMany kuinka monta vihollista halutaan
      * @return Palautetaan ArrayList, jonka jäseninä juuri paikoilleen asetetut viholliset
      */
     

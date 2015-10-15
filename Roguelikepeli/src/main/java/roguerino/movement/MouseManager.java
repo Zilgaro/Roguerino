@@ -33,7 +33,8 @@ public class MouseManager implements MouseListener {
      * Tällä hetkellä, koska pathfinding-algoritmia ei ole, liikkuminen toteutetaan
      * graafisessa käyttöliittymässä kuuntelemalla pelaajan ympärillä oleville
      * pikseleille tulevia hiiren klikkauksia ja liikutaan yhden blockin verran.
-     * @param e 
+     * @param e eventti jota käsitellään, eli siis initiaalinen klikkaus.
+     * Sisältää tiedon Y ja X koordinaateista ruudulla
      */
     
     @Override

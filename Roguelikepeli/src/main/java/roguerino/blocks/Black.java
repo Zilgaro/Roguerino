@@ -5,8 +5,9 @@ import roguerino.entities.Entity;
 import roguerino.entities.Player;
 
 /**
- *
- * @author Zilgaro
+ * 'Mustan' blockin luokka. Loppujenlopuksi tätä luokkaa ei tarvittu toteutuksessa,
+ * mutta se on hyvä testaustarkoituksiin, sekä mikäli haluaisi luoda asymmetrisiä kenttiä,
+ * tulisi tälle todennäköisesti käyttöä.
  */
 public class Black extends Blockerino{
     

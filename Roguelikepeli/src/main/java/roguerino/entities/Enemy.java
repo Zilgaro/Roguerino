@@ -3,6 +3,9 @@ package roguerino.entities;
 
 import roguerino.entities.Entity;
 
+/**
+ * Geneerisen vihollisen luomisen tarjoava luokka.
+ */
 
 public class Enemy implements Entity{
 
@@ -11,6 +14,14 @@ public class Enemy implements Entity{
     private int x;
     private int y;
     
+    
+    /**
+     * Vihollista luodessa halutaan pystyä asettamaan se tiettyyn paikkaan kartassa,
+     * mutta sen pitää myös tietää oma positionsa, jotta liikkumis -ja taistelulogiikka
+     * toimivat.
+     * @param x x-koordinaatti
+     * @param y y-koordinaatti
+     */
     public Enemy(int x, int y) {
         this.alive = true;
         this.x = x;
@@ -24,7 +35,6 @@ public class Enemy implements Entity{
     public boolean isAlive() {
         return this.alive;
     }
-    
 
     @Override
     public int getX() {

@@ -5,8 +5,9 @@ import roguerino.entities.Entity;
 import roguerino.entities.Player;
 
 /**
- *
- * @author Zilgaro
+ * Wall on identtinen black-blockin kanssa, kuitenkin tarpeellinen, jotta 
+ * piirtäessä voidaan selvästi erotella nämä kaksi tyyppiä.
+ * 
  */
 public class Wall extends Blockerino {
     

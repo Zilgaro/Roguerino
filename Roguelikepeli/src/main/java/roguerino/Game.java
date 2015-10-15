@@ -14,6 +14,10 @@ import roguerino.gfx.ImageManager;
 import roguerino.gfx.SpriteSheet;
 import roguerino.movement.MouseManager;
 
+/**
+ * Tämä käyttöliittymäluokka tarjoaa toiminnallisuuden renderöinnille, sekä pyörittää pelin
+ * keskeistä looppia jossa tapahtuu ruudunpäivitys ja ohjelmasäikeen aloitus sekä lopetus.
+ */
 
 public class Game extends Canvas implements Runnable {
     
@@ -30,7 +34,12 @@ public class Game extends Canvas implements Runnable {
         return logic;
     }
     
-
+    /**
+     * Käytännössä tämä metodi on public vain testauksen helpottamisen takia.
+     * Metodissa alustetaan yksityinen Logic, luokan BufferedImage ilmentymä spriteSheet
+     * ImageLoaderin lataamasta kuvasta ja ImageManager (jolla spriteSheetistä saadaan
+     * pilkottua yksittäiset spritet renderöinnin käyttöön).
+     */
     public void init() {
         this.logic = new Logic();
         this.logic.run();
@@ -45,6 +54,11 @@ public class Game extends Canvas implements Runnable {
         this.addMouseListener(mouseManager);
     }
     
+    /**
+     * Tämä metodi on pelin 'moottori'. Alussa alustetaan init() metodia käyttäen
+     * käytettävä logiikka, ladataan renderin käyttämä SpriteSheet, sekä MouseManager
+     * kuuntelemaan käyttäjän inputtia.
+     */
     @Override
     public void run() {
         init();
@@ -71,7 +85,7 @@ public class Game extends Canvas implements Runnable {
         stop();
     }
     
-    public synchronized void stop() {
+    private synchronized void stop() {
         if (!running) {
             return;
         }
@@ -82,6 +96,11 @@ public class Game extends Canvas implements Runnable {
             System.exit(0);
         }
     }
+    
+    /**
+     * Käynnistää pelisäikeen ja promptaa käyttäjää lyhyellä hassunhauskalla
+     * ohjeistuksella.
+     */
     
     public synchronized void start() {
         if (running) {
@@ -94,7 +113,7 @@ public class Game extends Canvas implements Runnable {
                 + " rinkulat ovat vihuja. Tapa kaikki.", "Hau tu plei", JOptionPane.INFORMATION_MESSAGE);
     }
     
-    public void render() {
+    private void render() {
         BufferStrategy bs = this.getBufferStrategy();
         if (bs == null) {
             createBufferStrategy(3);

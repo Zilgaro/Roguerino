@@ -5,8 +5,7 @@ import roguerino.entities.Entity;
 import roguerino.entities.Player;
 
 /**
- *
- * @author Zilgaro
+ *Empty-block on pelikentän yleisin käveltäväksi tarkoitettu block.
  */
 public class Empty extends Blockerino {
 
@@ -15,8 +14,6 @@ public class Empty extends Blockerino {
         this.walkable = true;
         this.TYPE = "EMPTY";
     }
-    
-    
 
     @Override
     public boolean isWalkable() {

@@ -10,20 +10,24 @@ import roguerino.levels.Level;
 import roguerino.entities.Player;
 
 /**
- * Luokka hoitaa liikkumisen käsittelyn.
+ * Luokka hoitaa liikkumisen käsittelyn ja pelaajan hyökkäämisen.
  */
 public class MovementLogic {
 
     private Level level;
 
-    /**
-     * Liikkumisella kahdeksan mahdollista suuntaa, jokaisen liikkumisen
-     * yhteydessä tarkistetaan validBlock-metodilla, onko liikkuminen
-     * mahdollista MouseManager hyödyntää tätä metodia.
-     */
     public MovementLogic(Level level) {
         this.level = level;
     }
+    
+    /**
+     * Liikkumisella kahdeksan mahdollista suuntaa, jokaisen liikkumisen
+     * yhteydessä tarkistetaan validBlock -metodilla ja attack -metodilla, onko liikkuminen
+     * mahdollista. MouseManager hyödyntää tätä metodia.
+     * @param movementKey suuntaa merkitsevä muuttuja
+     * @param entity entiteetti, jolle liikkuminen halutaan toteuttaa
+     */
+    
 
     public void movement(int movementKey, Entity entity) {
 
@@ -106,6 +110,13 @@ public class MovementLogic {
         }
     }
 
+    /**
+     * Apumetodi varsinaiselle validBlock -metodille.
+     * @param x x-koordinaatti
+     * @param y y-koordinaatti
+     * @return jos haettava block on levelin ulkopuolella, tai ei päällekäveltävä,
+     * palauttaa false, vice versa.
+     */
     public boolean validBlock(int x, int y) {
 
         if (x < 0 || y < 0 || x > this.level.getWidth() - 1 || y > this.level.getHeight() - 1) { //ei voi mennä out of bounds;
@@ -116,7 +127,7 @@ public class MovementLogic {
         return true;
     }
 
-    //Tämä seuraavakin metodi on melko härski.
+    
     public boolean validBlock(int x, int y, int movementKey) {
 
         if (this.level.getHeight() < x || this.level.getHeight() < y) {
@@ -165,8 +176,8 @@ public class MovementLogic {
      * päällekäisyyden estämiselle oli ennen validBlockilla, nyt sitä ei tarvita)
      *
      * @param entity Käytetään tarkistamaan onko hyökkääjä pelaaja vai vihollinen
-     * @param x
-     * @param y
+     * @param x hyökättävä x-koordinaatti
+     * @param y hyökättävä y-koordinaatti
      * @return Palauttaa true, mikäli hyökkäys on tehty.
      */
     public boolean attack(Entity entity, int x, int y) {
@@ -179,7 +190,7 @@ public class MovementLogic {
         }
         
         if(entity.getType().equals("ENEMY")) {
-            if(this.level.getBlock(x, y).hasEnemy()) {
+            if(this.level.getBlock(x, y).hasEnemy() || this.level.getBlock(x, y).hasPlayer()) {
                 return true;
             }
         }

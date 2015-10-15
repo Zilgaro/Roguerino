@@ -4,6 +4,9 @@ package roguerino.entities;
 
 import roguerino.entities.Entity;
 
+/**
+ * Simppeli luokka pelaaja-entiteetin luomiseen.
+ */
 public class Player implements Entity {
     
     private int x, y;
