@@ -110,7 +110,9 @@ public class Game extends Canvas implements Runnable {
         gameThread = new Thread(this);
         gameThread.start();
         JOptionPane.showMessageDialog (null, "Peliä ohjataan hiirellä, olet musta mötikkä, punaiset"
-                + " rinkulat ovat vihuja. Tapa kaikki.", "Hau tu plei", JOptionPane.INFORMATION_MESSAGE);
+                + " rinkulat ovat vihuja. "
+                + "Voit 'tappaa' vihollisia menemällä niiden viereen ja klikkaamalla", 
+                "Hau tu plei", JOptionPane.INFORMATION_MESSAGE);
     }
     
     private void render() {
