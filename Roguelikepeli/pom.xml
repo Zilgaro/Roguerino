@@ -57,9 +57,11 @@
                     <targetClasses>
                         <param>roguerino.levels.*</param>
                         <param>roguerino.logic.*</param>
+                        <param>roguerino.blocks.*</param>
                     </targetClasses>
                     <targetTests>
                         <param>roguerino.*</param>
+                        <param>roguerino</param>
                     </targetTests>                   
                 </configuration>
             </plugin>
