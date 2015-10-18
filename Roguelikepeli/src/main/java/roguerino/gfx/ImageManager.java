@@ -12,7 +12,13 @@ public class ImageManager {
     public BufferedImage enemy;
     public BufferedImage wall;
     public BufferedImage door;
-
+    
+    
+    /**
+     * Konstruktori croppaa annetun SpriteSheetin ja ottaa pilkotut kuvat talteen,
+     * jotta niitä voidaan käyttää renderöidessä.
+     * @param ss BufferedImagen toteuttava, luokan SpriteSheet ilmentymä
+     */
     public ImageManager(SpriteSheet ss) {
         this.player = ss.crop(0, 0, 32, 32);
         this.empty= ss.crop(1, 0, 32, 32);
@@ -22,7 +28,6 @@ public class ImageManager {
         this.enemy = ss.crop(5, 0, 32, 32);
         this.black= ss.crop(6, 0, 32, 32);
         
-
     }
 
 }
