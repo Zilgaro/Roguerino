@@ -30,12 +30,20 @@ public class Player implements Entity {
 
     @Override
     public void setX(int x) {
-        this.x = x;
+        if (x < 0) {
+            this.x = 0;
+        } else {
+            this.x = x;
+        }
     }
 
     @Override
     public void setY(int y) {
-        this.y = y;
+        if (y < 0) {
+            this.y = 0;
+        } else {
+            this.y = y;
+        }
     }
 
     @Override

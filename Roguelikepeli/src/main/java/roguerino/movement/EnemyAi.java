@@ -22,6 +22,7 @@ public  class EnemyAi {
         this.movLogic = new MovementLogic(this.level);
     
     }
+
     
     /**
      * Liikuttaa kaikkia eläviä tason vihollisia satunnaiseen suuntaan.
@@ -31,7 +32,10 @@ public  class EnemyAi {
      * @return True jos kaikki viholliset on merkitty tapetuiksi.
      */
     public boolean run(ArrayList<Enemy> enemies) {
-        
+            if (enemies == null) {
+                return true;
+            }
+            
             int deadCount = 0;
             for (Enemy enemy : enemies) {
                 

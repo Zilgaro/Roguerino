@@ -4,6 +4,10 @@ package roguerino.levels;
 
 import java.util.Random;
 
+/**
+ * Huoneiden generoimiseen tarkoitettu luokka, hoitaa myös niiden satunnaisen
+ * kääntämisen neljään eri suuntaan.
+ */
 public class RoomGenerator {
 
     private Random random;
@@ -12,6 +16,10 @@ public class RoomGenerator {
 
     }
 
+    /**
+     * Ei kovin random, käytännössä siis luodaan vain pieniä huoneita
+     * @return "arvottu" huone.
+     */
     public Room generateRandomRoom() {
         //this.random = new Random();
         //int roomType = this.random.nextInt(2);
@@ -37,6 +45,11 @@ public class RoomGenerator {
      D.W
      WWW
      */
+    
+    /**
+     * Luo Room -luokan toteuttavan pienen huoneen ja kääntää sen.
+     * @return satunnaissuuntaan käännetty roomSmall
+     */
     public Room roomSmall() {
         Room room = new RoomSmall();       
 
@@ -48,7 +61,12 @@ public class RoomGenerator {
 
         return room;
     }
-
+    
+    /**
+     * Kääntää annetun huoneen yhteen neljästä pääilmansuunnasta.
+     * @param room käännettävä huone
+     * @return käännetty huone
+     */
     public Room rotateRoom(Room room) {
         Room rotatedRoom = new Room(room.getHeight(), room.getWidth());
 

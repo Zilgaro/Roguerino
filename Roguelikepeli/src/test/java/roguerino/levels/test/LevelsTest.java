@@ -44,6 +44,15 @@ public class LevelsTest {
         
     }
     
+    @Test
+    public void levelSetUpWithNegativeBoundaries() {
+        Level level = new Level(-30, -20);
+        
+        if (level.getHeight() < 0 || level.getWidth() < 0) {
+            fail("Should not be able to set negative boundaries");
+        }
+    }
+    
     
     @BeforeClass
     public static void setUpClass() {

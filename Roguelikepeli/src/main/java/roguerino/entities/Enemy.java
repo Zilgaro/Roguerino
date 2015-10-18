@@ -24,8 +24,9 @@ public class Enemy implements Entity{
      */
     public Enemy(int x, int y) {
         this.alive = true;
-        this.x = x;
-        this.y = y;
+        this.x = Math.abs(x);
+        this.y = Math.abs(y);
+        
     }
     
     public void kill() {
@@ -48,12 +49,20 @@ public class Enemy implements Entity{
 
     @Override
     public void setX(int x) {
-        this.x = x;
+        if (x < 0) {
+            this.x = 0;
+        } else {
+            this.x = x;
+        }
     }
 
     @Override
     public void setY(int y) {
-        this.y = y;
+        if (y < 0) {
+            this.y = 0;
+        } else {
+            this.y = y;
+        }
     }
 
     @Override

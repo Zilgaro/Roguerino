@@ -15,8 +15,10 @@ public class Level {
     private int width;
 
     public Level(int height, int width) {
-        this.height = height;
-        this.width = width;
+        
+        
+        this.height = Math.abs(height);
+        this.width = Math.abs(width);
         this.blocks = new Blockerino[this.width][this.height];
         
         for (int i = 0; i < this.width; i++) {

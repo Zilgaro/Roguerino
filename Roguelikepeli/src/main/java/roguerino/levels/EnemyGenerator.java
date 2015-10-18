@@ -33,7 +33,8 @@ public class EnemyGenerator {
             int y = this.random.nextInt(level.getHeight());
             Blockerino block = level.getBlock(x, y);
 
-            if (block.isWalkable() && !block.getType().equals("DOOR")) {
+            if (block.isWalkable() && !block.getType().equals("DOOR")
+                    &&!block.hasEnemy() &&!block.hasPlayer()) {
                 if (block.getType().equals("FLOOR")) {
                     if (random.nextInt(100) > 80) {
                         Enemy newbie = new Enemy(x,y);

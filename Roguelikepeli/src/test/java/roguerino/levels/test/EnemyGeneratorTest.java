@@ -7,22 +7,21 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import roguerino.Game;
 import roguerino.levels.Level;
 import roguerino.logic.Logic;
 
 public class EnemyGeneratorTest {
     
-    private Game game;
+    private Logic test;
     
     public EnemyGeneratorTest() {
-        this.game = new Game();
-        game.init();
+        this.test = new Logic();
     }
+
     @Test
     public void EnemyGeneratorShouldCreateEnemiesCorrectly() {
-        Logic logic = game.getLogic();
-        Level level = logic.getLevel();
+        test.run();
+        Level level = test.getLevel();
         
         int monsterCount = 0;
         
