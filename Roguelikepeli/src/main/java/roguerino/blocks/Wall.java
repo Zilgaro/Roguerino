@@ -5,20 +5,21 @@ import roguerino.entities.Entity;
 import roguerino.entities.Player;
 
 /**
- * Wall on identtinen black-blockin kanssa, kuitenkin tarpeellinen, jotta 
+ * Wall on identtinen black-blockin kanssa, kuitenkin tarpeellinen, jotta
  * piirtäessä voidaan selvästi erotella nämä kaksi tyyppiä.
- * 
+ *
  */
 public class Wall extends Blockerino {
-    
+
     public Wall() {
         this.TYPE = "WALL";
         this.walkable = false;
         this.entity = null;
-        
+
     }
+
     @Override
-    public Player getPlayer() {    
+    public Player getPlayer() {
         return null;
     }
 
@@ -40,12 +41,12 @@ public class Wall extends Blockerino {
     public String getType() {
         return this.TYPE;
     }
- 
+
     @Override
     public boolean hasEnemy() {
         return false;
     }
-    
+
     @Override
     public Enemy getEnemy() {
         return null;

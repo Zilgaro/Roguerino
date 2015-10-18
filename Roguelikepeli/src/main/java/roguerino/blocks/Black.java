@@ -5,13 +5,12 @@ import roguerino.entities.Entity;
 import roguerino.entities.Player;
 
 /**
- * 'Mustan' blockin luokka. Loppujenlopuksi tätä luokkaa ei tarvittu toteutuksessa,
- * mutta se on hyvä testaustarkoituksiin, sekä mikäli haluaisi luoda asymmetrisiä kenttiä,
- * tulisi tälle todennäköisesti käyttöä.
+ * 'Mustan' blockin luokka. Loppujenlopuksi tätä luokkaa ei tarvittu
+ * toteutuksessa, mutta se on hyvä testaustarkoituksiin, sekä mikäli haluaisi
+ * luoda asymmetrisiä kenttiä, tulisi tälle todennäköisesti käyttöä.
  */
-public class Black extends Blockerino{
-    
-    
+public class Black extends Blockerino {
+
     public Black() {
         this.walkable = false;
         this.TYPE = "BLACK";
@@ -27,8 +26,7 @@ public class Black extends Blockerino{
     public Player getPlayer() {
         return null;
     }
-    
-   
+
     @Override
     public String getType() {
         return this.TYPE;
@@ -39,7 +37,6 @@ public class Black extends Blockerino{
         return false;
     }
 
-    
     @Override
     public boolean hasEnemy() {
         return false;
@@ -53,6 +50,5 @@ public class Black extends Blockerino{
     public Enemy getEnemy() {
         return null;
     }
-    
-    
+
 }

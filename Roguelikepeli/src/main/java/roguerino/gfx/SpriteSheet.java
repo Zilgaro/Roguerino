@@ -1,4 +1,3 @@
-
 package roguerino.gfx;
 
 import java.awt.image.BufferedImage;

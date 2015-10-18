@@ -10,7 +10,7 @@ import roguerino.entities.Entity;
 import roguerino.entities.Player;
 
 /**
- *Ovi-blockin toiminnallisuus.
+ * Ovi-blockin toiminnallisuus.
  */
 public class Door extends Blockerino {
 

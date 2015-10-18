@@ -16,15 +16,15 @@ public class EnemyGenerator {
         this.random = new Random();
     }
 
-    
     /**
      * Metodin ideana on luoda satunnaisiin paikkoihin vihollisia, huoneiden
      * sisällä olevat viholliset ovat melko harvinaisia.
+     *
      * @param level Leveli, jolle viholliset generoidaan
      * @param howMany kuinka monta vihollista halutaan
-     * @return Palautetaan ArrayList, jonka jäseninä juuri paikoilleen asetetut viholliset
+     * @return Palautetaan ArrayList, jonka jäseninä juuri paikoilleen asetetut
+     * viholliset
      */
-    
     public ArrayList<Enemy> createEnemies(Level level, int howMany) {
         ArrayList<Enemy> enemies = new ArrayList<>();
         int numberOfEnemies = howMany;
@@ -34,17 +34,17 @@ public class EnemyGenerator {
             Blockerino block = level.getBlock(x, y);
 
             if (block.isWalkable() && !block.getType().equals("DOOR")
-                    &&!block.hasEnemy() &&!block.hasPlayer()) {
+                    && !block.hasEnemy() && !block.hasPlayer()) {
                 if (block.getType().equals("FLOOR")) {
                     if (random.nextInt(100) > 80) {
-                        Enemy newbie = new Enemy(x,y);
+                        Enemy newbie = new Enemy(x, y);
                         enemies.add(newbie);
                         block.setEntity(newbie);
                         numberOfEnemies--;
                     }
                 } else {
                     if (random.nextInt(100) > 91) {
-                        Enemy newbie = new Enemy(x,y);
+                        Enemy newbie = new Enemy(x, y);
                         enemies.add(newbie);
                         block.setEntity(newbie);
                         numberOfEnemies--;

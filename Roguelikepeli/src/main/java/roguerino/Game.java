@@ -1,5 +1,3 @@
-
-
 package roguerino;
 
 import roguerino.logic.Logic;
@@ -15,30 +13,30 @@ import roguerino.gfx.SpriteSheet;
 import roguerino.movement.MouseManager;
 
 /**
- * Tämä käyttöliittymäluokka tarjoaa toiminnallisuuden renderöinnille, sekä pyörittää pelin
- * keskeistä looppia jossa tapahtuu ruudunpäivitys ja ohjelmasäikeen aloitus sekä lopetus.
+ * Tämä käyttöliittymäluokka tarjoaa toiminnallisuuden renderöinnille, sekä
+ * pyörittää pelin keskeistä looppia jossa tapahtuu ruudunpäivitys ja
+ * ohjelmasäikeen aloitus sekä lopetus.
  */
-
 public class Game extends Canvas implements Runnable {
-    
+
     private Logic logic;
-    public static final int WIDTH = 320, HEIGHT =320, SCALE = 2, FOV = 5;
+    public static final int WIDTH = 320, HEIGHT = 320, SCALE = 2, FOV = 5;
     public static boolean running = false;
     public Thread gameThread;
     private BufferedImage spriteSheet;
     private ImageManager imageManager;
     private MouseManager mouseManager;
-   
 
     public Logic getLogic() {
         return logic;
     }
-    
+
     /**
      * Käytännössä tämä metodi on public vain testauksen helpottamisen takia.
-     * Metodissa alustetaan yksityinen Logic, luokan BufferedImage ilmentymä spriteSheet
-     * ImageLoaderin lataamasta kuvasta ja ImageManager (jolla spriteSheetistä saadaan
-     * pilkottua yksittäiset spritet renderöinnin käyttöön).
+     * Metodissa alustetaan yksityinen Logic, luokan BufferedImage ilmentymä
+     * spriteSheet ImageLoaderin lataamasta kuvasta ja ImageManager (jolla
+     * spriteSheetistä saadaan pilkottua yksittäiset spritet renderöinnin
+     * käyttöön).
      */
     public void init() {
         this.logic = new Logic();
@@ -53,11 +51,11 @@ public class Game extends Canvas implements Runnable {
         this.mouseManager = new MouseManager(this.logic);
         this.addMouseListener(mouseManager);
     }
-    
+
     /**
-     * Tämä metodi on pelin 'moottori'. Alussa alustetaan init() metodia käyttäen
-     * käytettävä logiikka, ladataan renderin käyttämä SpriteSheet, sekä MouseManager
-     * kuuntelemaan käyttäjän inputtia.
+     * Tämä metodi on pelin 'moottori'. Alussa alustetaan init() metodia
+     * käyttäen käytettävä logiikka, ladataan renderin käyttämä SpriteSheet,
+     * sekä MouseManager kuuntelemaan käyttäjän inputtia.
      */
     @Override
     public void run() {
@@ -72,19 +70,19 @@ public class Game extends Canvas implements Runnable {
             delta += (now - lastTime) / ns;
             lastTime = now;
             if (delta >= 1) {
-                if(logic.getEnemyAi().run(logic.getEnemies())) {
-                    JOptionPane.showMessageDialog (null, "I hope you're happy now.", "You are a monster", JOptionPane.INFORMATION_MESSAGE);
+                if (logic.getEnemyAi().run(logic.getEnemies())) {
+                    JOptionPane.showMessageDialog(null, "I hope you're happy now.", "You are a monster", JOptionPane.INFORMATION_MESSAGE);
                     System.exit(0);
                 }
-                
+
                 delta--;
             }
             render();
-            
+
         }
         stop();
     }
-    
+
     private synchronized void stop() {
         if (!running) {
             return;
@@ -96,12 +94,11 @@ public class Game extends Canvas implements Runnable {
             System.exit(0);
         }
     }
-    
+
     /**
      * Käynnistää pelisäikeen ja promptaa käyttäjää lyhyellä hassunhauskalla
      * ohjeistuksella.
      */
-    
     public synchronized void start() {
         if (running) {
             return;
@@ -109,12 +106,12 @@ public class Game extends Canvas implements Runnable {
         running = true;
         gameThread = new Thread(this);
         gameThread.start();
-        JOptionPane.showMessageDialog (null, "Peliä ohjataan hiirellä, olet musta mötikkä, punaiset"
+        JOptionPane.showMessageDialog(null, "Peliä ohjataan hiirellä, olet musta mötikkä, punaiset"
                 + " rinkulat ovat vihuja. "
-                + "Voit 'tappaa' vihollisia menemällä niiden viereen ja klikkaamalla", 
+                + "Voit 'tappaa' vihollisia menemällä niiden viereen ja klikkaamalla",
                 "Hau tu plei", JOptionPane.INFORMATION_MESSAGE);
     }
-    
+
     private void render() {
         BufferStrategy bs = this.getBufferStrategy();
         if (bs == null) {
@@ -142,13 +139,13 @@ public class Game extends Canvas implements Runnable {
                 } else {
                     g.drawImage(imageManager.empty, (j + FOV) * 32 * SCALE, (i + FOV) * 32 * SCALE, 32 * SCALE, 32 * SCALE, null);
                 }
-            
+
                 if (block.hasPlayer()) {
                     g.drawImage(imageManager.player, (j + FOV) * 32 * SCALE, (i + FOV) * 32 * SCALE, 32 * SCALE, 32 * SCALE, null);
                 }
-                
+
                 if (block.hasEnemy()) {
-                    g.drawImage(imageManager.enemy,(j + FOV) * 32 * SCALE, (i + FOV) * 32 * SCALE, 32 * SCALE, 32 * SCALE, null);
+                    g.drawImage(imageManager.enemy, (j + FOV) * 32 * SCALE, (i + FOV) * 32 * SCALE, 32 * SCALE, 32 * SCALE, null);
                 }
 
             }

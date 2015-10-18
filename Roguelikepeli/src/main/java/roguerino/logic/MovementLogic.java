@@ -1,4 +1,3 @@
-
 package roguerino.logic;
 
 import roguerino.entities.Entity;
@@ -15,16 +14,15 @@ public class MovementLogic {
     public MovementLogic(Level level) {
         this.level = level;
     }
-    
+
     /**
      * Liikkumisella kahdeksan mahdollista suuntaa, jokaisen liikkumisen
-     * yhteydessä tarkistetaan validBlock -metodilla ja attack -metodilla, onko liikkuminen
-     * mahdollista. MouseManager hyödyntää tätä metodia.
+     * yhteydessä tarkistetaan validBlock -metodilla ja attack -metodilla, onko
+     * liikkuminen mahdollista. MouseManager hyödyntää tätä metodia.
+     *
      * @param movementKey suuntaa merkitsevä muuttuja
      * @param entity entiteetti, jolle liikkuminen halutaan toteuttaa
      */
-    
-
     public void movement(int movementKey, Entity entity) {
 
         int y = entity.getY();
@@ -108,10 +106,11 @@ public class MovementLogic {
 
     /**
      * Apumetodi varsinaiselle validBlock -metodille.
+     *
      * @param x x-koordinaatti
      * @param y y-koordinaatti
-     * @return jos haettava block on levelin ulkopuolella, tai ei päällekäveltävä,
-     * palauttaa false, vice versa.
+     * @return jos haettava block on levelin ulkopuolella, tai ei
+     * päällekäveltävä, palauttaa false, vice versa.
      */
     public boolean validBlock(int x, int y) {
 
@@ -126,14 +125,14 @@ public class MovementLogic {
     /**
      * Tarkistaa ylläolevan samannimisen metodin kanssa yhteistyössä, onko
      * haluttu block sellainen, että siihen voi kävellä.
+     *
      * @param x liikuttava x-koordinaatti
      * @param y liikuttava y-koordinaatti
-     * @param movementKey liikkumisessa käytetty suunta, tämän avulla tarkistetaan
-     * onko pelaaja esimerkiksi seinän vieressä ja yrittää liikkua yläviistoon tyhjälle blockille
-     * tavallaan seinän 'läpi'
+     * @param movementKey liikkumisessa käytetty suunta, tämän avulla
+     * tarkistetaan onko pelaaja esimerkiksi seinän vieressä ja yrittää liikkua
+     * yläviistoon tyhjälle blockille tavallaan seinän 'läpi'
      * @return true jos valid
      */
-    
     public boolean validBlock(int x, int y, int movementKey) {
 
         if (this.level.getHeight() < x || this.level.getHeight() < y) {
@@ -176,12 +175,14 @@ public class MovementLogic {
      * hyökkääminen käytännössä toimisi käyttäen sitä liikkumisen yhteydessä.
      * Hyökättävälle viholliselle laitetaan alive-muuttujan arvoksi false, joten
      * EnemyAi osaa poistaa sen elävien kirjoista. (heh)
-     * 
-     * Special case: Enemy koittaa liikkua blockiin, jossa on jo toinen enemy. 
-     * Tällöin ei tehdä mitään, joten liikkumista ei tapahdu (Toiminnallisuus
-     * päällekäisyyden estämiselle oli ennen validBlockilla, nyt sitä ei tarvita)
      *
-     * @param entity Käytetään tarkistamaan onko hyökkääjä pelaaja vai vihollinen
+     * Special case: Enemy koittaa liikkua blockiin, jossa on jo toinen enemy.
+     * Tällöin ei tehdä mitään, joten liikkumista ei tapahdu (Toiminnallisuus
+     * päällekäisyyden estämiselle oli ennen validBlockilla, nyt sitä ei
+     * tarvita)
+     *
+     * @param entity Käytetään tarkistamaan onko hyökkääjä pelaaja vai
+     * vihollinen
      * @param x hyökättävä x-koordinaatti
      * @param y hyökättävä y-koordinaatti
      * @return Palauttaa true, mikäli hyökkäys on tehty.
@@ -194,9 +195,9 @@ public class MovementLogic {
                 return true;
             }
         }
-        
-        if(entity.getType().equals("ENEMY")) {
-            if(this.level.getBlock(x, y).hasEnemy() || this.level.getBlock(x, y).hasPlayer()) {
+
+        if (entity.getType().equals("ENEMY")) {
+            if (this.level.getBlock(x, y).hasEnemy() || this.level.getBlock(x, y).hasPlayer()) {
                 return true;
             }
         }

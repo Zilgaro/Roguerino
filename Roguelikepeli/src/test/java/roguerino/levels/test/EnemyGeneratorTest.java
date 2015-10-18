@@ -1,4 +1,3 @@
-
 package roguerino.levels.test;
 
 import org.junit.After;
@@ -11,9 +10,9 @@ import roguerino.levels.Level;
 import roguerino.logic.Logic;
 
 public class EnemyGeneratorTest {
-    
+
     private Logic test;
-    
+
     public EnemyGeneratorTest() {
         this.test = new Logic();
     }
@@ -22,33 +21,33 @@ public class EnemyGeneratorTest {
     public void EnemyGeneratorShouldCreateEnemiesCorrectly() {
         test.run();
         Level level = test.getLevel();
-        
+
         int monsterCount = 0;
-        
+
         for (int i = 0; i < level.getWidth(); i++) {
             for (int j = 0; j < level.getHeight(); j++) {
                 if (level.getBlock(i, j).hasEnemy()) {
                     monsterCount++;
-                } 
+                }
             }
         }
-        
+
         assertTrue(monsterCount == 20);
-        
+
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }

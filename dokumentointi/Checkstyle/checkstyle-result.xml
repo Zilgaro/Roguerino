@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="5.7">
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\blocks\Black.java">
+</file>
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\blocks\Blockerino.java">
+<error line="14" column="12" severity="error" message="Name &apos;TYPE&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck"/>
+</file>
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\blocks\Door.java">
+</file>
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\blocks\Empty.java">
+</file>
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\blocks\Floor.java">
+</file>
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\blocks\Wall.java">
+</file>
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\entities\Enemy.java">
+<error line="10" column="20" severity="error" message="Name &apos;TYPE&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck"/>
+</file>
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\entities\Entity.java">
+</file>
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\entities\Player.java">
+<error line="13" column="26" severity="error" message="Name &apos;TYPE&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck"/>
+</file>
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\Game.java">
+</file>
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\gfx\ImageLoader.java">
+</file>
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\gfx\ImageManager.java">
+</file>
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\gfx\SpriteSheet.java">
+</file>
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\levels\EnemyGenerator.java">
+</file>
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\levels\Level.java">
+</file>
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\levels\LevelGenerator.java">
+</file>
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\levels\Room.java">
+</file>
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\levels\RoomGenerator.java">
+</file>
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\levels\RoomSmall.java">
+</file>
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\logic\Logic.java">
+</file>
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\logic\MovementLogic.java">
+<error line="1" severity="error" message="File length is 207 lines (max allowed is 200)." source="com.puppycrawl.tools.checkstyle.checks.sizes.FileLengthCheck"/>
+</file>
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\Main.java">
+</file>
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\movement\EnemyAi.java">
+</file>
+<file name="C:\Users\Zilgaro\Documents\Roguerino\Roguelikepeli\src\main\java\roguerino\movement\MouseManager.java">
+</file>
+</checkstyle>

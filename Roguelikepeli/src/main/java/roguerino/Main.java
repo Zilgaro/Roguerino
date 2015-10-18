@@ -1,5 +1,3 @@
-
-
 package roguerino;
 
 import java.awt.Dimension;
@@ -8,11 +6,10 @@ import static roguerino.Game.HEIGHT;
 import static roguerino.Game.SCALE;
 import static roguerino.Game.WIDTH;
 
-
 public class Main {
 
     public static void main(String[] args) {
-      
+
         Game game = new Game();
         game.setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
         game.setMaximumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
@@ -26,8 +23,7 @@ public class Main {
         frame.setVisible(true);
 
         game.start();
-      
+
     }
-    
-    
+
 }

@@ -11,16 +11,17 @@ public class Floor extends Blockerino {
 
     public Floor() {
         this.TYPE = "FLOOR";
-         this.entity = null;
+        this.entity = null;
         this.walkable = true;
     }
+
     @Override
     public Player getPlayer() {
-        
+
         if (this.entity == null) {
             return null;
         }
-        
+
         if (this.entity.getType().equals("PLAYER")) {
             return (Player) entity;
         }
@@ -36,7 +37,7 @@ public class Floor extends Blockerino {
     public void setEntity(Entity entity) {
         if (this.entity == null) {
             this.entity = entity;
-          //Selvennys: halutaan, että nulliksi laittaminen (liikkuminen) on mahdollista.
+            //Selvennys: halutaan, että nulliksi laittaminen (liikkuminen) on mahdollista.
         } else if (entity == null) {
             this.entity = null;
         }
@@ -51,16 +52,16 @@ public class Floor extends Blockerino {
     public String getType() {
         return this.TYPE;
     }
- 
+
     @Override
     public boolean hasEnemy() {
-        if ( entity == null) {
+        if (entity == null) {
             return false;
         }
-        
+
         return entity.getType().equals("ENEMY");
     }
-    
+
     @Override
     public Enemy getEnemy() {
         if (this.entity != null) {

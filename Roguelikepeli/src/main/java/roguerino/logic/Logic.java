@@ -15,8 +15,9 @@ import roguerino.levels.Room;
 import roguerino.levels.RoomGenerator;
 
 /**
- * Tällä hetkellä logiikka hoitaa huoneiden generoinni kutsun, liikkumisen, vihollisten
- * generoinnin kutsun sekä hoitaa, että huoneet osuvat tyhjiin paikkoihin levelin sisällä.
+ * Tällä hetkellä logiikka hoitaa huoneiden generoinni kutsun, liikkumisen,
+ * vihollisten generoinnin kutsun sekä hoitaa, että huoneet osuvat tyhjiin
+ * paikkoihin levelin sisällä.
  */
 public class Logic {
 
@@ -63,12 +64,12 @@ public class Logic {
         }
 
     }
-    
+
     /**
      * Luo halutun määrän huoneita generaattorin avulla.
+     *
      * @param i Haluttu määrä
      */
-    
     private void createRooms(int i) {
         while (i > 0) {
             Room room = this.roomGenerator.generateRandomRoom();
@@ -77,13 +78,13 @@ public class Logic {
             }
         }
     }
-    
-    
+
     /**
-     * Asettaa huoneen satunnaiseen paikkaan kentässä, käyttää checkIfAreaIsEmpty
-     * metodia varmistaakseen paikan kelpoisuuden.
+     * Asettaa huoneen satunnaiseen paikkaan kentässä, käyttää
+     * checkIfAreaIsEmpty metodia varmistaakseen paikan kelpoisuuden.
+     *
      * @param room annettu huone
-     * @return 
+     * @return
      */
     private boolean placeRoom(Room room) {
         int x = random.nextInt(this.level.getWidth() - room.getWidth());
@@ -102,6 +103,7 @@ public class Logic {
 
     /**
      * Metodi tarkistaa, onko haluttu paikka huoneelle vapaa.
+     *
      * @param x 'keskikohdan' x-koordinaatti
      * @param y 'keskikohdan' y-koordinaatti
      * @param width huoneen leveys
@@ -118,22 +120,20 @@ public class Logic {
                         return false;
                     }
                 }
-                if ( !block.getType().equals("EMPTY") || block.hasPlayer() || block.hasEnemy() ) {
+                if (!block.getType().equals("EMPTY") || block.hasPlayer() || block.hasEnemy()) {
                     return false;
                 }
             }
         }
         return true;
     }
-    
-    
 
     public void run() {
         this.level.getBlock(25, 25).setEntity(this.player);
         this.player.setX(25);
         this.player.setY(25);
         createRooms(15);
-        this.enemies = enemyGenerator.createEnemies(this.level, 20);      
+        this.enemies = enemyGenerator.createEnemies(this.level, 20);
     }
 
 }
