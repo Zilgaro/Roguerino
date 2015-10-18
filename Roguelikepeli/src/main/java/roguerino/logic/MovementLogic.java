@@ -123,6 +123,16 @@ public class MovementLogic {
         return true;
     }
 
+    /**
+     * Tarkistaa ylläolevan samannimisen metodin kanssa yhteistyössä, onko
+     * haluttu block sellainen, että siihen voi kävellä.
+     * @param x liikuttava x-koordinaatti
+     * @param y liikuttava y-koordinaatti
+     * @param movementKey liikkumisessa käytetty suunta, tämän avulla tarkistetaan
+     * onko pelaaja esimerkiksi seinän vieressä ja yrittää liikkua yläviistoon tyhjälle blockille
+     * tavallaan seinän 'läpi'
+     * @return true jos valid
+     */
     
     public boolean validBlock(int x, int y, int movementKey) {
 

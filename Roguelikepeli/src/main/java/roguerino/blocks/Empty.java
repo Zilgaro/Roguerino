@@ -5,14 +5,19 @@ import roguerino.entities.Entity;
 import roguerino.entities.Player;
 
 /**
- *Empty-block on pelikentän yleisin käveltäväksi tarkoitettu block.
+ *Empty-block on pelikentän yleisin käveltäväksi tarkoitettu block. Viimehetken
+ * lisäyksenä boolean muuttuja isInFrontOfDoor, tällä minimoin huoneiden clutteraamisen
+ * niin, ettei niihin pääse sisään.
  */
 public class Empty extends Blockerino {
 
+    private boolean isInFrontOfDoor;
+    
     public Empty() {
         this.entity = null;
         this.walkable = true;
         this.TYPE = "EMPTY";
+        this.isInFrontOfDoor = false;
     }
 
     @Override
@@ -86,5 +91,13 @@ public class Empty extends Blockerino {
             }
         }
         return null;
+    }
+
+    public boolean isIsInFrontOfDoor() {
+        return isInFrontOfDoor;
+    }
+
+    public void setIsInFrontOfDoor(boolean isInFrontOfDoor) {
+        this.isInFrontOfDoor = isInFrontOfDoor;
     }
 }

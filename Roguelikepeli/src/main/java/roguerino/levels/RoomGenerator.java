@@ -18,12 +18,18 @@ public class RoomGenerator {
 
     /**
      * Ei kovin random, käytännössä siis luodaan vain pieniä huoneita
-     * @return "arvottu" huone.
+     * @return "arvottu" ja käännetty huone.
      */
     public Room generateRandomRoom() {
         //this.random = new Random();
         //int roomType = this.random.nextInt(2);
         Room room = roomSmall();
+        
+        Random r = new Random();
+        int a = r.nextInt(4);
+        for (int i = 0; i < a; i++) {
+            room = rotateRoom(room);
+        }
 
         return room;
     }
@@ -47,18 +53,11 @@ public class RoomGenerator {
      */
     
     /**
-     * Luo Room -luokan toteuttavan pienen huoneen ja kääntää sen.
+     * Luo Room -luokan toteuttavan pienen huoneen.
      * @return satunnaissuuntaan käännetty roomSmall
      */
     public Room roomSmall() {
         Room room = new RoomSmall();       
-
-        Random r = new Random();
-        int a = r.nextInt(4);
-        for (int i = 0; i < a; i++) {
-            room = rotateRoom(room);
-        }
-
         return room;
     }
     

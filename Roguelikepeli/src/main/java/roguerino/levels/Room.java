@@ -30,14 +30,14 @@ public class Room {
         }
     }  
     public void setBlock(Blockerino block, int x, int y){
-        if (this.width >= x - 1 && this.height >= y - 1) {
+        if (this.width > x && this.height > y ) {
             this.blocks[x][y]=block;
         }
     }
     
     
     public Blockerino getBlock(int x, int y){
-        if (this.width >= x - 1 && this.height >= y - 1) {
+        if (this.width > x  && this.height > y ) {
             return this.blocks[x][y];
         }
         return null;

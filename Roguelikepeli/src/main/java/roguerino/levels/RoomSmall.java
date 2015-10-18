@@ -1,4 +1,3 @@
-
 package roguerino.levels;
 
 import roguerino.blocks.Blockerino;
@@ -7,12 +6,11 @@ import roguerino.blocks.Empty;
 import roguerino.blocks.Floor;
 import roguerino.blocks.Wall;
 
-/** 
+/**
  * Konstruktoi pienen huoneen generaattorin käyttöön.
  */
+public class RoomSmall extends Room {
 
-public class RoomSmall extends Room{
-    
     public final int width = 4;
     public final int height = 3;
     public final Blockerino[][] rakenne;
@@ -20,31 +18,24 @@ public class RoomSmall extends Room{
     public RoomSmall() {
         rakenne = new Blockerino[this.width][this.height];
         Wall wall = new Wall();
-        
-        
+        Blockerino doorBlock = new Door();
+        Blockerino floorBlock = new Floor();
         //menee vähän hassusti mutta menköön
         for (int i = 0; i < 3; i++) {
             for (int j = 1; j < 4; j++) {
-                if (i == 1 && j == 1) { 
-                } else if ( i == 1 && j == 2) {
+                if (i == 1 && j == 1) {
+                    rakenne[1][1] = doorBlock;
+                } else if (i == 1 && j == 2) {
+                    rakenne[2][1] = floorBlock;
                 } else {
                     rakenne[j][i] = wall;
-                }     
-            }    
-            }   
-        
-        Blockerino doorBlock = new Door();
-        rakenne[1][1] = doorBlock;
+                }
+            }
+        }
 
-        
-        Blockerino floorBlock = new Floor();
-
-        
-        rakenne[2][1] = floorBlock;
-
-        
         for (int i = 0; i < 3; i++) {
-            Blockerino nothingHere = new Empty();
+            Empty nothingHere = new Empty();
+            nothingHere.setIsInFrontOfDoor(true);
             rakenne[0][i] = nothingHere;
         }
     }
@@ -63,9 +54,5 @@ public class RoomSmall extends Room{
     public Blockerino getBlock(int x, int y) {
         return this.rakenne[x][y];
     }
-    
-    
-    
-    
-    
+
 }

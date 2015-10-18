@@ -8,6 +8,7 @@ import roguerino.levels.LevelGenerator;
 import java.util.Random;
 import roguerino.blocks.Black;
 import roguerino.blocks.Blockerino;
+import roguerino.blocks.Empty;
 import roguerino.entities.Enemy;
 import roguerino.levels.EnemyGenerator;
 import roguerino.levels.Room;
@@ -101,16 +102,22 @@ public class Logic {
 
     /**
      * Metodi tarkistaa, onko haluttu paikka huoneelle vapaa.
-     * @param x 
-     * @param y
+     * @param x 'keskikohdan' x-koordinaatti
+     * @param y 'keskikohdan' y-koordinaatti
      * @param width huoneen leveys
      * @param height huoneen korkeus
-     * @return 
+     * @return True jos on vapaa
      */
     private boolean checkIfAreaIsEmpty(int x, int y, int width, int height) {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 Blockerino block = this.level.getBlock(x + i, y + j);
+                if (block.getType().equals("Empty")) {
+                    Empty empty = (Empty) block;
+                    if (empty.isIsInFrontOfDoor()) {
+                        return false;
+                    }
+                }
                 if ( !block.getType().equals("EMPTY") || block.hasPlayer() || block.hasEnemy() ) {
                     return false;
                 }
@@ -125,7 +132,7 @@ public class Logic {
         this.level.getBlock(25, 25).setEntity(this.player);
         this.player.setX(25);
         this.player.setY(25);
-        createRooms(25);
+        createRooms(15);
         this.enemies = enemyGenerator.createEnemies(this.level, 20);      
     }
 
